@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        <!-- 구글폰트 -->
+        <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/recommend.css">
+        <script type="text/javascript" src="/static/recommend.js"></script>
+
+
+        <title>스파르타코딩클럽 | 1주차 프로젝트</title>
+
+        <!-- style -->
+        <style type="text/css">
+        </style>
+
+        <script>
+        </script>
+
+</head>
+<body>
+        <header>
+                <h1 class="title">몇 가지 질문에 답해주시면,<br>오늘 드실 음식을 추천해드릴게요!</br></h1>
+        </header>
+        <main>
+                <h3 class="subtitle">Q1. 어제는 어떤 종류의 음식을 드셨나요? (중복 선택 가능)</h3>
+                <div class="container" id="select-box">
+                        <button class="item" value="1">한식</button>
+                        <button class="item" value="2">중식</button>
+                        <button class="item" value="3">일식</button>
+                        <button class="item" value="4">양식</button>
+                        <button class="item" value="5">분식</button>
+                        <button class="item" value="6">빵</button>
+                        <button class="item" value="7">야식</button>
+                        <button class="item" value="8">패스트푸드</button>
+                        <button class="item" value="9">상관없음</button>
+                </div>
+                <div>
+                        <button class="next" id="btn-next" onclick="getCode()">다음</button>
+                        <button class="last" id="btn-pick">이거 먹을래요!</button>
+                        <button class="last" id="btn-another">다른 거 추천해줘요!</button>
+                </div>
+        </main>
+</body>
+</html>

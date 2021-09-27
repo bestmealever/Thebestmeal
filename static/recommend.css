@@ -1,0 +1,60 @@
+header {
+    background-color: #ffecb3;
+    height: 300px;
+}
+
+.title {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.subtitle {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.container {
+    height: 400px;
+    width: 800px;
+    padding-top: 50px;
+    margin-top: 20px;
+
+    border: solid 2px black;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.item {
+    width: 200px;
+    height: 70px;
+    min-width: 200px;
+
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.next {
+    width: 200px;
+    height: 70px;
+    min-width: 200px;
+
+    cursor: pointer;
+    font-size: 20px;
+
+    margin: 20px auto 0px auto;
+    display: block;
+}
+
+.last {
+    width: 200px;
+    height: 70px;
+    min-width: 200px;
+
+    cursor: pointer;
+    font-size: 20px;
+
+    margin: 20px auto 0px auto;
+    display: block;
+}
