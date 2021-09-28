@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- v1 safeinfo -->
+        // function saveinfo() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '/userpick'
+        //         data: {
+        //             yesterday_give: ,
+        //             today_give:
+        //             mood_give:
+        //         },
+        //         success: function (response) {
+        //             alert(response['msg'])
+        //         }
+        //     });
+        // }
+
+
+<!--onclick 함수 -->
+<!--likeStar('${menu}')-->
+<!--일일이 적은 데이터 -->
+    <div>
+
+<!--        <button type="button" class="btn btn-outline-primary" onclick="likeStar('${name}')">한식</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">중식</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">일식</button>-->
+
+<!--        <br></br>-->
+<!--        <button type="button" class="btn btn-outline-primary">양식</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">분식</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">디저트</button>-->
+
+
+<!--        <br></br>-->
+<!--        <button type="button" class="btn btn-outline-primary">야식</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">패스트푸드</button>-->
+<!--        <button type="button" class="btn btn-outline-primary">상관없다</button>-->
+
+
+<!--            # 주식 추천 따라서 해봄.. API 로 카테고리 가져오기-->
+<!--    # @app.route('/category', methods=['GET'])-->
+<!--    # def get_category():-->
+<!--    #     category = list(db.category.find({}))-->
+<!--    #     return jsonify(category)-->
+<!--    #-->
+<!--    #-->
+<!--    # @app.route('/codes', methods=['GET'])-->
+<!--    # def get_codes():-->
+<!--    #     group = request.args.get('group')-->
+<!--    #     codes = list(db.codes.find({'group': group}, {'_id': False}))-->
+<!--    #     return jsonify(codes)-->
+
+<!--    # #사용자가 누른 것들을 다 저장하는 기능 (중복선택)-->
+<!--    # @app.route('/userpick', methods=['POST'])-->
+<!--    # def save_info():-->
+<!--    #     yesterday_receive = request.form["yesterday_give"]-->
+<!--    #     today_receive = request.form["today_give"]-->
+<!--    #     mood_receive = request.form["mood_give"]-->
+<!--    #     doc = {"yesterday":yesterday_receive, "today": today_receive, "mood":mood_receive}-->
+<!--    #     db.users.insert_one(doc)-->
+<!--    #     return jsonify({'result':'success', 'msg':'저장 완료!'})-->
+<!--    #-->
+    </div>
+</body>
+</html>
+
+## @app.route('/api/like', methods=['POST'])
+# def like_star():
+#     name_receive = request.form['name_give']
+#     target_star = db.mystar2.find_one({'name': name_receive})
+#     current_like = target_star['like']
+#     new_like = current_like+1
+#
+#     db.mystar2.update_one({'name': name_receive}, {'$set': {'like': new_like}})
+#     return jsonify({'msg': '좋아요 완료!'})
+
+# @app.route('/q1', methods=['POST'])
+# menu_receive = request.form['menu_give']
+# chosen_category = db.category.find_one({'category': menu_receive})
+# current_like = target_star['like']
+# new_like = current_like + 1
+#
+# db.user.update_one({'name': name_receive}, {'$set': {'like': new_like}})
+# return jsonify({'msg': '선택 완료!'})
+
+
+
+        // 비교함수
+        // function () {
+        //     let word = $("#input-word").val().toLowerCase()
+        //     if (word == "") {
+        //         alert('단어를 입력하세요!')
+        //         return
+        //     }
+        //
+        //     if (word_list.includes(word)) {
+        //         $(`#word-${word}`).addClass("highlight")
+        //         $(`#word-${word}`).siblings().removeClass("highlight")
+        //         $(`#word-${word}`)[0].scrollIntoView()
+        //     } else {
+        //         window.location.href = `/detail/${word}?status_give=new`
+        //     }

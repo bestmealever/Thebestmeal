@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link href='{{ url_for("static", filename="mystyle.css") }}' rel="stylesheet">
+    <script>
+
+        $(document).ready(function () {
+        q1();
+        });
+
+        function q1() {
+            $.ajax({
+                type: 'GET',
+                url: '/q1',
+                data: {},
+                success: function (response) {
+                    let category = response['categories']
+
+                    for (let i = 0; i < category.length; i++) {
+                        let menu = category[i]["category"]
+                        let temp_html = `<button type="button" class="btn btn-outline-primary" onclick="choose1('${menu}')">${menu}</button>`
+                        $('#q1').append(temp_html)
+                    }
+                }
+            });
+        }
+
+        function choose1(menu) {
+            $.ajax({
+                type: 'POST',
+                url: '/choose1',
+                data: {menu_give:menu},
+                success: function (response) {
+                    alert(response['msg']);
+                }
+            });
+        }
+
+        </script>
+
+        <style>
+            * {
+            font - family: 'Nanum Gothic', sans-serif;
+        }
+
+            /*.btn-group {*/
+            /*    margin-top: 20px;*/
+            /*}*/
+
+        .wrap {
+            text-align: center;
+        }
+        </style>
+
+    </head>
+
+    <body>
+    <div class="wrap">
+    <div class="banner" onclick="window.location.href = '/'"></div>
+    <p class="lead">몇가지 질문에 답해주시면, 오늘 드실 음식을 추천해드릴게요!</P>
+    <P><H4>Q1. 어제는 어떤 종류의 음식을 드셨나요?</H4></P>
+
+        <hr class="my-4">
+        <span id="q1" style="font-size: 20px">
+            </span>
+        <hr class="my-4">
+            <button onclick="window.location.href = '/recommendation2'" id="q1menu" type="button" class="btn btn-primary">다음
+            </button>
+
+    </div>
+    </body>
+</html>
+
+<!--        다른 칸에 붙일 것. -->
+<!--        <button onclick="" type="button" class="btn btn-success" id="q2menu"-->
+<!--                style="display: none;">다음-->
+<!--        </button>-->
+<!--        <button onclick="finish()" type="button" class="btn btn-secondary" id="q3menu"-->
+<!--                style="display: none;">추천받기-->
+<!--        </button>-->
