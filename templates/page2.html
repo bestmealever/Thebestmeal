@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!--   폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;500&family=Gugi&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+            listing()
+        })
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/recommend",
+                data: {},
+                success: function (response) {
+                    let mealcard = response['all_meals']
+                    console.log(mealcard)
+                    for (let i = 0; i < mealcard.length; i++) {
+                        let name = mealcard[i]['name']
+                        let recommend = mealcard[i]['recommend_user']
+                        let img = mealcard[i]['photo']
+                        console.log(name, recommend, img)
+
+                        let temp_html = `
+                        <div class="card">
+                        <img src="../static/${img}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">${name}</h5>
+                <p class="card-text">${recommend}</p>
+            </div>
+        </div>
+                        `
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
+        function posting() {
+            let category = $('#category').val()
+            let name = $('#name').val()
+            let recommend = $("#recommend").val()
+
+            let file = $('#file')[0].files[0]
+            let form_data = new FormData()
+
+            form_data.append("file_give", file)
+            form_data.append("title_give", title)
+            form_data.append("content_give", content)
+            form_data.append("category_give", category)
+            //폼데이터라는 곳에 실어서 함께 보낸다. 파일이라는 형식때문에 ...
+
+            $.ajax({
+                type: "POST",
+                url: "/diary",
+                data: form_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+    </script>
+    <title>오늘 뭐먹지?</title>
+
+</head>
+<body>
+<div class="wrap">
+    <div class="title">오늘 뭐먹지?</div>
+
+    <div class="wrap">
+        <div class="container">
+            <h1>음식을 추천해주세요</h1>
+            <div class="postingBox">
+                <!--파일업로드-->
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file">
+                    <label class="custom-file-label" for="file">사진 선택하기</label>
+                </div>
+                <!--음식 이름 name-->
+                <div class="form-group">
+                    <input type="email" class="form-control" id="name" placeholder="음식 이름">
+                </div>
+                <!--카테고리-->
+                <div class="category_select">
+                    <label for="category">음식의 장르를 선택해주세요!</label>
+                    <select name="category" id="category">
+                        <option value="한식">한식</option>
+                        <option value="양식">양식</option>
+                        <option value="중식">중식</option>
+                        <option value="일식">일식</option>
+                        <option value="디저트">디저트</option>
+                        <option value="분식">분식</option>
+                        <option value="야식">야식</option>
+                        <option value="패스트푸드">패스트푸드</option>
+                    </select>
+                </div>
+                <!--이럴때 추천해요 condition-->
+                <div class="condition_select">
+                    <label for="condition">이럴 때 추천해요!</label>
+                    <select name="condition" id="condition">
+                        <option value="fatigued">피곤할 때</option>
+                        <option value="busy">시간이 없을 때</option>
+                        <option value="stressed">스트레스 받을 때</option>
+                        <option value="laidback">시간이 많을 때</option>
+                        <option value="sweet">당땡길때</option>
+                        <option value="fatty">기름진게 땡길 때</option>
+                    </select>
+                </div>
+                <button onclick="posting()" type="button" class="btn btn-primary">저장하기</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-columns" id="cards-box">
+        <!--                <div class="card">-->
+        <!--                    &lt;!&ndash;        <img class="card-img-top" src="..." alt="Card image cap">&ndash;&gt;-->
+        <!--                    <div class="card-body">-->
+        <!--                        <h5 class="card-title">맛있다</h5>-->
+        <!--                        <p class="card-text">계속 먹고 싶다</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+    </div>
+
+
+</div>
+</body>
+</html>
