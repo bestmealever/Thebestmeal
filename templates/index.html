@@ -15,6 +15,8 @@
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
             crossorigin="anonymous"></script>
     <link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,28 +33,28 @@
           rel="stylesheet">
 
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
-    <script>
-    </script>
-    <style>
-    </style>
 </head>
+
+
+
+
 <body>
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <use xlink:href="#bootstrap"/>
-            </svg>
-        </a>
+<!--<div class="container">-->
+<!--    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">-->
+<!--        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">-->
+<!--            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">-->
+<!--                <use xlink:href="#bootstrap"/>-->
+<!--            </svg>-->
+<!--        </a>-->
 
-        <p> HEADER </p>
+<!--        <p> HEADER </p>-->
 
-        <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">My_page</button>
-            <button type="button" class="btn btn-primary">HOME</button>
-        </div>
-    </header>
-</div>
+<!--        <div class="col-md-3 text-end">-->
+<!--            <button type="button" class="btn btn-outline-primary me-2">My_page</button>-->
+<!--            <button type="button" class="btn btn-primary">HOME</button>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--</div>-->
 
 <div class="px-4 py-5 my-5 text-center">
     <!--    <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
@@ -66,40 +68,42 @@
 <div id="wrap">
     <div id="btn-group" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
         <div class="question-h">
-            <h4> Q.1 어제 드신 음식은 어떤 종류인가요? </h4>
+            <h4> Q.1 어떤 종류의 음식이 땡기시나요? </h4>
         </div>
+
         <div class="btn-group-in">
             <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck1">한식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck1">한식</label>
 
             <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck2">중식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck2">중식</label>
 
             <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck3">일식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck3">일식</label>
         </div>
         <div class="btn-group-in">
             <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck4">양식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck4">양식</label>
 
             <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck5">분식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck5">분식</label>
 
             <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck6">빵</label>
+            <label class="btn btn-outline-primary choice" for="btncheck6">빵</label>
         </div>
         <div class="btn-group-in">
             <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck7">야식</label>
+            <label class="btn btn-outline-primary choice" for="btncheck7">야식</label>
 
             <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck8">패스트푸드</label>
+            <label class="btn btn-outline-primary choice" for="btncheck8">패스트푸드</label>
 
             <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck9">내가 어제 뭘 먹었더라...</label>
+            <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
         </div>
         <div class="btn-group-out">
-            <button type="button" class="btn btn-primary" onclick="Q_1()">다음_1</button>
+            <button type="button" class="btn btn-primary next" onclick="want()">다음</button>
+            <button type="button" class="btn btn-primary next" onclick="want_no()">땡기는게 없어요</button>
         </div>
     </div>
 </div>
