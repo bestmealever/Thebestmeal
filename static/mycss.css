@@ -1,0 +1,32 @@
+* {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        #wrap {
+            width: 600px;
+            margin: auto;
+            /*background-color: aquamarine;*/
+        }
+
+        .btn-group {
+            display: block;
+            padding: 10px;
+        }
+
+        .btn-group .btn-group-in {
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .question-h {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .question-h h2 {
+            margin-bottom: 20px;
+        }
+
+        input[type=checkbox] {
+            transform: scale(1.5);
+        }
