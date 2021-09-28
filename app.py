@@ -27,19 +27,21 @@ def page2():
 
 
 ##API
+# @app.route('/Q_1', methods=['POST'])
+# def q1():
+#     q1_receive = request.form.getlist('q1_give[]')
+#     return {'msg': q1_receive}
+
+
 @app.route('/Q_1', methods=['POST'])
 def q1():
-    q1_receive = request.form.getlist('q1_give[]')
-    return {'msg': q1_receive}
-
-
-@app.route('/Q_2', methods=['POST'])
-def q2():
-    q2_receives = request.form.getlist('q2_give')
-    for q2_receive in q2_receives:
-        selectcategory = list(db.meals.find({'category': q2_receive}, {'_id': False}))
-        print(selectcategory)
-    return {'selectcategory': selectcategory}
+    print('wow')
+    q1_receives = request.form.getlist('Q_1_give[]')
+    print(q1_receives)
+    # for q2_receive in q2_receives:
+    #     selectcategory = list(db.meals.find({'category': q2_receive}, {'_id': False}))
+    #     print(selectcategory)
+    return {'msg': q1_receives}
 
 
 @app.route('/Q_3', methods=['POST'])

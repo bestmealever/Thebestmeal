@@ -16,5 +16,5 @@ for fb in fbs:
 print('--왜안되노--')
 meals = list(db.meals.find({}, {'_id': False}))
 for meal in meals :
-        meals_list = meal
-        print(meals_list)
+    meals_list = meal
+    print(meals_list)
