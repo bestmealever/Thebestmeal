@@ -1,8 +1,11 @@
 function want() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked"))
+        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
+            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        }
     }
+    console.log(btn_val)
     $.ajax({
         type: "POST",
         url: "/want",
@@ -15,23 +18,23 @@ function want() {
         <h4> Q.2 오늘 기분은 어때요? </h4>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
         <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
         <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
         <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
         <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
         <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
@@ -57,33 +60,33 @@ function want_no() {
             <h4> Q.2 그럼 어제는 뭐 먹었어요? </h4>
         </div>
         <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="korean">
             <label class="btn btn-outline-primary choice" for="btncheck1">한식</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="chinese">
             <label class="btn btn-outline-primary choice" for="btncheck2">중식</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="japanese">
             <label class="btn btn-outline-primary choice" for="btncheck3">일식</label>
         </div>
         <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="western">
             <label class="btn btn-outline-primary choice" for="btncheck4">양식</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="snack">
             <label class="btn btn-outline-primary choice" for="btncheck5">분식</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="bread">
             <label class="btn btn-outline-primary choice" for="btncheck6">빵</label>
         </div>
         <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" value="supper">
             <label class="btn btn-outline-primary choice" for="btncheck7">야식</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off" value="fastfood">
             <label class="btn btn-outline-primary choice" for="btncheck8">패스트푸드</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" value="salad">
             <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
         </div>
         <div class="btn-group-out">
@@ -101,7 +104,9 @@ function want_no() {
 function yesterday() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked"))
+        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
+            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        }
     }
     $.ajax({
         type: "POST",
@@ -115,23 +120,23 @@ function yesterday() {
         <h4> Q.3 오늘 기분은 어때요? </h4>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
         <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
         <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
         <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
         <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
         <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
@@ -156,23 +161,23 @@ function yesterday_no() {
         <h4> Q.3 오늘 기분은 어때요? </h4>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
         <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
         <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
         <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
     </div>
     <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
         <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
         <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
 
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
@@ -188,7 +193,9 @@ function yesterday_no() {
 function feeling() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked"))
+        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
+            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        }
     }
     $.ajax({
         type: "POST",
@@ -198,10 +205,11 @@ function feeling() {
             if (response['result'] == 'fail') {
                 alert(response['msg'])
             } else {
+                console.log(response['choosen'])
                 temp_html = `<div class="question-h">
-        <h2>오늘은, <br> ${response['msg']['name']} <br> 어때요?!</h2>
+        <h2>오늘은, <br> ${response['choosen'][0]['name']} <br> 어때요?!</h2>
     </div>
-        <img src="${response['msg']['photo']}" alt="${response['msg']['name']}">
+        <img src="${response['choosen'][0]['url']}" alt="${response['choosen'][0]['name']}">
     <div class="btn-group-out">
         <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
         <button type="button" class="btn btn-primary" onclick="">마음에 안들어요...</button>
