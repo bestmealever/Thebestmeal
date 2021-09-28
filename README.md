@@ -27,9 +27,9 @@ git checkout sw
 git add .
 git commit -m '~~~'
 
-git check out main
+git push origin sw
 
-git push origin main
+git check out main (메인으로 빠져나오기)
 ```
 
 <br>
