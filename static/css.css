@@ -1,0 +1,94 @@
+* {
+    font-family: 'Gothic A1', sans-serif;
+
+}
+
+.wrap {
+    width: 800px;
+    margin: auto;
+    padding: 20px 70px 50px 70px;
+
+}
+
+.title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 55pt;
+    text-align: center;
+}
+
+.textBox {
+    width: 580px;
+    text-align: center;
+    margin: auto;
+}
+
+.selectBox {
+    display: flex;
+    padding: 50px 0 0 0;
+}
+
+.selectBox1 {
+    width: 800px;
+    height: 250px;
+
+    background: #eb583b;
+    border-radius: 16px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 250px;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgb(223 223 223) 10px 10px 10px -5px;
+
+}
+
+.question {
+    font-weight : bold;
+}
+
+
+.btnWrap {
+    width: 580px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+
+}
+
+.btn {
+    width: 150px;
+    height: 100px;
+    margin: 20px;
+    line-height: 80px;
+}
+
+.next {
+    width: 580px;
+}
+
+.btnNext {
+    width: 200px;
+    display: block;
+    margin: 30px auto auto auto;
+}
+.recommendbox {
+    width:580px;
+    text-align: center;
+}
+.recommendMeal {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 30pt;
+    text-align: center;
+}
+.meal_img {
+    width:580px;
+    height: 400px;
+    background-image : url("https://upload.wikimedia.org/wikipedia/commons/5/54/Korean_pancake-Pajeon-06.jpg");
+    background-position: center;
+
+}
+.restart {
+    width: 580px;
+}
