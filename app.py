@@ -132,7 +132,7 @@ def retry():
     what_you_want.retry()
     num = what_you_want.retry_num
     if what_you_want.retry_num >= len(what_you_want.choice_num):
-        return jsonify({'result': 'success', 'msg1': '더 이상', 'chosen':{'name':'추천 할게 없어요 ㅠㅠ', 'url':'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'}, 'msg2': ''})
+        return jsonify({'result': 'success', 'msg1': '', 'chosen':{'name':'더 이상 추천 할게 없어요 ㅠㅠ', 'url':'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'}, 'msg2': ''})
     else:
         return jsonify({'result': 'success', 'msg1': '그러면~', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
 

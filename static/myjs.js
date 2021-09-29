@@ -250,7 +250,7 @@ function retry() {
         data: {},
         success: function (response) {
             temp_html = `<div class="question-h">
-        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span>> ${response['msg2']}</p>
+        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
         <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
