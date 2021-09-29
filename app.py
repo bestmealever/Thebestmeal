@@ -23,6 +23,10 @@ for_reverse = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'su
 def home():
     return render_template('index.html')
 
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
 
 ## API 역할을 하는 부분
 @app.route('/want', methods=['POST'])

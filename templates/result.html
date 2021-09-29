@@ -37,6 +37,32 @@
           rel="stylesheet">
 
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <script>
+        $(document).ready(
+            function feeling() {
+            $.ajax({
+            type: "POST",
+            url: "/feeling",
+            data: {feeling_give: btn_val},
+            success: function (response) {
+                if (response['result'] == 'fail') {
+                    alert(response['msg'])
+                } else {
+                    console.log(response['choosen'])
+                    temp_html = `<div class="question-h">
+            <h2>오늘은, <br> ${response['choosen'][0]['name']} <br> 어때요?!</h2>
+        </div>
+            <div class="mealimg" style="background-image: url('${response['choosen'][0]['url']}" alt="${response['choosen'][0]['name']}";"></div>
+        <div class="btn-group-out">
+            <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
+            <button type="button" class="btn btn-primary" onclick="">마음에 안들어요...</button>
+        </div>`
+
+                    $('#resultBox').append(temp_html)
+                }
+            }
+        })})
+    </script>
 </head>
 
 
@@ -49,50 +75,15 @@
 
 </div>
 
-
-<div id="wrap">
-    <div id="btn-group" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-        <div class="question-h">
-            <p class="questionStyle"> Q.1 어떤 종류의 음식이 땡기시나요? </p>
-        </div>
-
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="korean">
-            <label class="btn btn-outline-primary choice" for="btncheck1">한식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="chinese">
-            <label class="btn btn-outline-primary choice" for="btncheck2">중식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="japanese">
-            <label class="btn btn-outline-primary choice" for="btncheck3">일식</label>
-        </div>
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="western">
-            <label class="btn btn-outline-primary choice" for="btncheck4">양식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="snack">
-            <label class="btn btn-outline-primary choice" for="btncheck5">분식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="bread">
-            <label class="btn btn-outline-primary choice" for="btncheck6">빵</label>
-        </div>
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" value="supper">
-            <label class="btn btn-outline-primary choice" for="btncheck7">야식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off" value="fastfood">
-            <label class="btn btn-outline-primary choice" for="btncheck8">패스트푸드</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" value="salad">
-            <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
-        </div>
+<div id="resultBox">
+<div class="question-h">
+            <p class="todays">오늘은 <span class="recommend"> 짜장면 </span> 어때요?!</p>
+</div>
+            <div class="mealimg" style="background-image: url('https://img.piku.co.kr/w/uploads/7zd4dE/2810a42561ef2717b1ec99edd9f83258.jpg');"></div>
         <div class="btn-group-out">
-            <button type="button" class="btn btn-primary next" onclick="want()">다음</button>
-            <button type="button" class="btn btn-primary next" onclick="want_no()">땡기는게 없어요</button>
+            <button type="button" class="btn">다른거 먹을게요!</button>
+            <button type="button" class="btn">이거 먹을게요!</button>
         </div>
     </div>
-</div>
-
-
 </body>
 </html>

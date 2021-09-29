@@ -209,7 +209,7 @@ function feeling() {
                 temp_html = `<div class="question-h">
         <h2>오늘은, <br> ${response['choosen'][0]['name']} <br> 어때요?!</h2>
     </div>
-        <img src="${response['choosen'][0]['url']}" alt="${response['choosen'][0]['name']}">
+        <div class="mealimg" style="background-image: url('${response['choosen'][0]['url']}" alt="${response['choosen'][0]['name']}";"></div>
     <div class="btn-group-out">
         <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
         <button type="button" class="btn btn-primary" onclick="">마음에 안들어요...</button>
