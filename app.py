@@ -11,16 +11,57 @@ client = MongoClient('localhost', 27017)
 
 db = client.team_project
 
-choices = []
-for_reverse = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'supper', 'fastfood', 'salad']
+class what_you_want_for_meal:
+    def __init__(self):
+        self.for_reverse = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'supper', 'fastfood', 'salad']
+        self.retry_num = 0
 
-# want_food = True
-# yesterday_food = True
-# feeling_emo = True
+    def want_receive(self, want_give):
+        self.want = want_give
+
+    def yesterday(self, yesterday_give):
+        yesterday_give_receive_reverse = []
+        for i in self.for_reverse:
+            if i not in yesterday_give:
+                yesterday_give_receive_reverse.append(i)
+            else:
+                pass
+        self.want = yesterday_give_receive_reverse
+
+    def yesterday_no(self):
+        self.want = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'supper', 'fastfood', 'salad']
+
+    def feeling(self, feel):
+        self.chosen = []
+        self.feel = feel
+
+        for i in self.want:
+            for j in self.feel:
+                self.chosen.append(db.team_project.find_one({'category': i, 'emotion': j}, {'_id': False, 'name': True, 'url': True}))
+
+        if self.chosen == [None]:
+            self.chosen = [{'name':'추천 할게 없어요 ㅠㅠ', 'url':'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'}]
+        else:
+            self.choice_num = [i for i in range(len(self.chosen))]
+            random.shuffle(self.choice_num)
+
+    def retry(self):
+        self.retry_num += 1
+    #
+    # def clean_want(self):
+    #     self.want = []
+    #
+    # def clean_feel(self):
+    #     self.feel = []
+
+
+what_you_want = what_you_want_for_meal()
 
 ## HTML을 주는 부분
 @app.route('/')
 def home():
+    global what_you_want
+    what_you_want = what_you_want_for_meal()
     return render_template('index.html')
 
 @app.route('/result')
@@ -32,17 +73,15 @@ def result():
 @app.route('/want', methods=['POST'])
 def want():
     want_give_receive = request.form.getlist('want_give[]')
-    print(want_give_receive)
     if want_give_receive == []:
         return jsonify({'result': 'fail', 'msg': '하나 이상 선택해 주세요!'})
     else:
-        choices.append(want_give_receive)
+        what_you_want.want_receive(want_give_receive)
+        print(what_you_want.want)
         return jsonify({'result': 'success'})
 
 @app.route('/want_no', methods=['POST'])
 def want_no():
-    # global want_food
-    # want_food = False
     return {'msg': '먹고 싶은게 없다니...'}
 
 
@@ -52,46 +91,50 @@ def yesterday():
     if yesterday_give_receive == []:
         return jsonify({'result': 'fail', 'msg': '하나 이상 선택해 주세요!'})
     else:
-        yesterday_give_receive_reverse = []
-        for i in for_reverse:
-            if i not in yesterday_give_receive:
-                yesterday_give_receive_reverse.append(i)
-            else:
-                pass
-        choices.append(yesterday_give_receive_reverse)
+        what_you_want.yesterday(yesterday_give_receive)
+        print(what_you_want.want)
         return jsonify({'result': 'success'})
 
 @app.route('/yesterday_no', methods=['POST'])
 def yesterday_no():
-    # global yesterday_food
-    # yesterday_food = False
-
+    what_you_want.yesterday_no()
+    print(what_you_want.want)
     return {'msg': '어제 먹은게 기억이 안나요??'}
 
 
 @app.route('/feeling', methods=['POST'])
 def feeling():
-    choosen = []
     feeling_give_receive = request.form.getlist('feeling_give[]')
-    choices.append(feeling_give_receive)
-    print(choices)
     if feeling_give_receive == []:
         return jsonify({'result': 'fail', 'msg': '하나 이상 선택해 주세요!'})
     else:
+        what_you_want.feeling(feeling_give_receive)
+        if len(what_you_want.chosen) == 1:
+            return jsonify({'result': 'success', 'msg1':'', 'chosen': what_you_want.chosen[0], 'msg2':''})
+        else:
+            num = what_you_want.retry_num
+            return jsonify({'result': 'success', 'msg1': '오늘은,', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
+        # print(what_you_want.chosen)
+        # print(len(what_you_want.chosen))
+        # print(what_you_want.choice_num)
+        # print(num)
+        # print(what_you_want.chosen[what_you_want.choice_num[num]])
 
-        for i in choices[0]:
-            for j in choices[1]:
-                choosen.append(db.team_project.find_one({'category': i, 'emotion': j}, {'_id': False, 'name': True, 'url': True}))
-        print(choosen)
-        choices.clear()
-        return jsonify({'result': 'success', 'choosen': choosen})
 
 
 @app.route('/feeling_no', methods=['POST'])
 def feeling_no():
-    # global feeling_emo
-    # feeling_emo = False
-    return {'msg': '기분을 모르겠다니 ㅠㅠ'}
+    return {'msg': '하나 이상 선택해줘야 추천을 하지...!!!'}
+
+
+@app.route('/retry', methods=['POST'])
+def retry():
+    what_you_want.retry()
+    num = what_you_want.retry_num
+    if what_you_want.retry_num >= len(what_you_want.choice_num):
+        return jsonify({'result': 'success', 'msg1': '더 이상', 'chosen':{'name':'추천 할게 없어요 ㅠㅠ', 'url':'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'}, 'msg2': ''})
+    else:
+        return jsonify({'result': 'success', 'msg1': '그러면~', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
 
 
 if __name__ == '__main__':

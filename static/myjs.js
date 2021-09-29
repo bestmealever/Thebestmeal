@@ -205,14 +205,14 @@ function feeling() {
             if (response['result'] == 'fail') {
                 alert(response['msg'])
             } else {
-                console.log(response['choosen'])
+                console.log(response['chosen'])
                 temp_html = `<div class="question-h">
-        <h2>오늘은, <br> ${response['choosen'][0]['name']} <br> 어때요?!</h2>
+        <h2>${response['msg1']} <br> ${response['chosen']['name']} <br> ${response['msg2']}</h2>
     </div>
-        <div class="mealimg" style="background-image: url('${response['choosen'][0]['url']}" alt="${response['choosen'][0]['name']}";"></div>
+        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
         <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
-        <button type="button" class="btn btn-primary" onclick="">마음에 안들어요...</button>
+        <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
     </div>`
                 $('#btn-group').empty()
                 $('#btn-group').append(temp_html)
@@ -229,16 +229,37 @@ function feeling_no() {
         data: {},
         success: function (response) {
             alert(response['msg'])
+    //         temp_html = `<div class="question-h">
+    //     <h2>오늘은, <br> ${response['msg']['name']} <br> 어때요?!</h2>
+    // </div>
+    //     <img src="${response['msg']['url']}" alt="${response['msg']['name']}">
+    // <div class="btn-group-out">
+    //     <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
+    //     <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
+    // </div>`
+    //         $('#btn-group').empty()
+    //         $('#btn-group').append(temp_html)
+        }
+    })
+}
+
+function retry() {
+    $.ajax({
+        type: "POST",
+        url: "/retry",
+        data: {},
+        success: function (response) {
             temp_html = `<div class="question-h">
-        <h2>오늘은, <br> ${response['msg']['name']} <br> 어때요?!</h2>
+        <h2>${response['msg1']} <br> ${response['chosen']['name']} <br> ${response['msg2']}</h2>
     </div>
-        <img src="${response['msg']['photo']}" alt="${response['msg']['name']}">
+        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
         <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
-        <button type="button" class="btn btn-primary" onclick="">마음에 안들어요...</button>
+        <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
     </div>`
             $('#btn-group').empty()
             $('#btn-group').append(temp_html)
         }
     })
 }
+
