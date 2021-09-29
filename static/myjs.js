@@ -15,7 +15,7 @@ function want() {
                 alert(response['msg'])
             } else {
                 temp_html = `<div class="question-h">
-        <h4> Q.2 오늘 기분은 어때요? </h4>
+        <p class="questionStyle"> Q.2 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
         <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
@@ -38,8 +38,8 @@ function want() {
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
-        <button type="button" class="btn btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
                 $('#btn-group').empty()
                 $('#btn-group').append(temp_html)
@@ -57,7 +57,7 @@ function want_no() {
         success: function (response) {
             alert(response['msg'])
             temp_html = `        <div class="question-h">
-            <h4> Q.2 그럼 어제는 뭐 먹었어요? </h4>
+            <p class="questionStyle"> Q.2 그럼 어제는 뭐 먹었어요? </p>
         </div>
         <div class="btn-group-in">
             <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="korean">
@@ -90,8 +90,8 @@ function want_no() {
             <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
         </div>
         <div class="btn-group-out">
-            <button type="button" class="btn btn-primary next" onclick="yesterday()">다음</button>
-            <button type="button" class="btn btn-primary next" onclick="yesterday_no()">잘 모르겠어요</button>
+            <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday()">다음</button>
+            <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday_no()">잘 모르겠어요</button>
         </div>`
             $('#btn-group').empty()
             $('#btn-group').append(temp_html)
@@ -117,7 +117,7 @@ function yesterday() {
                 alert(response['msg'])
             } else {
                 temp_html = `<div class="question-h">
-        <h4> Q.3 오늘 기분은 어때요? </h4>
+        <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
         <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
@@ -140,8 +140,8 @@ function yesterday() {
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
-        <button type="button" class="btn btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
                 $('#btn-group').empty()
                 $('#btn-group').append(temp_html)
@@ -158,7 +158,7 @@ function yesterday_no() {
         success: function (response) {
             alert(response['msg'])
             temp_html = `<div class="question-h">
-        <h4> Q.3 오늘 기분은 어때요? </h4>
+        <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
         <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
@@ -181,8 +181,8 @@ function yesterday_no() {
         <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
     </div>
     <div class="btn-group-out">
-        <button type="button" class="btn btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
+        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
             $('#btn-group').empty()
             $('#btn-group').append(temp_html)
@@ -207,12 +207,12 @@ function feeling() {
             } else {
                 console.log(response['chosen'])
                 temp_html = `<div class="question-h">
-        <h2>${response['msg1']} <br> ${response['chosen']['name']} <br> ${response['msg2']}</h2>
+        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
         <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
-        <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
-        <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
+        <button type="button" class="btn selectbutton btn-primary" onclick="">이거 먹을게요!</button>
+        <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
     </div>`
                 $('#btn-group').empty()
                 $('#btn-group').append(temp_html)
@@ -230,12 +230,12 @@ function feeling_no() {
         success: function (response) {
             alert(response['msg'])
     //         temp_html = `<div class="question-h">
-    //     <h2>오늘은, <br> ${response['msg']['name']} <br> 어때요?!</h2>
+    //     <p class="todays">오늘은 <span class="recommend">${response['msg']['name']}</span> 어때요?!</p>
     // </div>
     //     <img src="${response['msg']['url']}" alt="${response['msg']['name']}">
     // <div class="btn-group-out">
-    //     <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
-    //     <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
+    //     <button type="button" class="btn selectbutton btn-primary" onclick="">이거 먹을게요!</button>
+    //     <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
     // </div>`
     //         $('#btn-group').empty()
     //         $('#btn-group').append(temp_html)
@@ -250,12 +250,12 @@ function retry() {
         data: {},
         success: function (response) {
             temp_html = `<div class="question-h">
-        <h2>${response['msg1']} <br> ${response['chosen']['name']} <br> ${response['msg2']}</h2>
+        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span>> ${response['msg2']}</p>
     </div>
         <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
-        <button type="button" class="btn btn-primary" onclick="">이거 먹을게요!</button>
-        <button type="button" class="btn btn-primary" onclick="retry()">마음에 안들어요...</button>
+        <button type="button" class="btn selectbutton btn-primary" onclick="">이거 먹을게요!</button>
+        <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
     </div>`
             $('#btn-group').empty()
             $('#btn-group').append(temp_html)

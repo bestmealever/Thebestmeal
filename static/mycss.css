@@ -4,9 +4,27 @@
     /*font-family: 'Roboto', sans-serif;*/
 }
 
+/*헤더 css*/
+
+.mypage {
+    height: 50px;
+    text-align: center;
+}
+
+.btn-outline-danger {
+    margin: auto;
+    display: inline-block;
+    width: 100px;
+}
+.btn-outline-success {
+    margin: auto;
+    display: inline-block;
+    width: 100px;
+}
+
 .titleBox {
     height: 200px;
-    padding: 30px;
+    padding: 10px;
     background-color: #fbe9e7;
 }
 
@@ -14,7 +32,6 @@
     font-family: 'Black Han Sans', sans-serif;
     font-size: 55pt;
     text-align: center;
-
 }
 
 .titleText {
@@ -22,6 +39,9 @@
     font-weight: 200;
     text-align: center;
 }
+
+
+/*Question페이지 css*/
 
 .questionStyle {
     font-family: 'Gothic A1', sans-serif;
@@ -48,15 +68,6 @@
     display: flex;
 }
 
-.question-h {
-    text-align: center;
-    padding: 30px 0px 0px 0px;
-}
-
-.question-h h2 {
-    margin-bottom: 20px;
-}
-
 input[type=checkbox] {
     transform: scale(1.5);
 }
@@ -68,15 +79,19 @@ input[type=checkbox] {
     line-height: 80px;
 }
 
-.btn.btn-primary.next {
-    width: 200px;
-    display: block;
-    margin: 30px auto auto auto;
+
+/*결과페이지 관련 css*/
+
+.question-h {
+    text-align: center;
+    padding: 30px 0px 0px 0px;
 }
+
 .todays {
     font-weight: 200;
     font-size: 25px;
 }
+
 .recommend {
     font-weight: 400;
     font-size: 25px;
@@ -86,54 +101,62 @@ input[type=checkbox] {
     width: 400px;
     height: 300px;
     background-repeat: no-repeat;
-    background-size : cover;
-    margin:20px auto 30px auto;
+    background-size: cover;
+    margin: 20px auto 30px auto;
 }
+
+
+/*하단 버튼 관련 css*/
+
 .btn-group-out {
     width: 600px;
     margin: auto auto 30px auto;
     text-align: center;
 }
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+
+.btn.selectbutton {
+    /* 생략 */
+    margin: 30px auto 0px auto;
+    padding: 0.5rem 1rem;
+    width: 200px;
+
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+
+    display: inline-block;
+
+    border: indianred 2px solid;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition: 0.5s;
 }
-button {
-  /* 생략 */
-  margin: 0;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  text-decoration: none;
 
-  display: inline-block;
-  width: auto;
-
-  border: none;
-  border-radius: 12px;
-
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-  cursor: pointer;
-
-  transition: 0.5s;
-}
 .btn {
     width: 200px;
-    background : white;
+    background: white;
     font-weight: 400;
-    color : indianred;
+    color: indianred;
     border: indianred 2px solid;
     border-radius: 20px;
     margin: 0 10px 0 10px;
+
+    /*-webkit-tap-highlight-color: transparent;*/
 }
-.btn:active {
-    width: 200px;
-    background : indianred;
-    font-weight: 400;
-    color : white;
-    border: indianred 2px solid;
-    border-radius: 20px;
-    margin: 0 10px 0 10px;
+/*.btn:hover {*/
+/*    background-color: indianred;*/
+/*    border: indianred 2px solid;*/
+/*} 아래에 합침.*/
+
+.btn:hover, .btn:focus, .btn:active, .btn.active {
+    background-color: indianred;
+    border-color: indianred;
+    font-color: #fff;
 }
 
+input[type = "checkbox"]:checked + .btn {
+    background-color: indianred;
+    border-color: indianred;
+}
