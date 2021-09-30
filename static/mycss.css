@@ -160,3 +160,11 @@ input[type = "checkbox"]:checked + .btn {
     background-color: indianred;
     border-color: indianred;
 }
+
+
+.map_wrap {
+    width: 800px;
+    margin: auto;
+    padding: 20px 70px 50px 70px;
+    /*background-color: aquamarine;*/
+}
