@@ -15,7 +15,7 @@ class what_you_want_for_meal:
     def __init__(self):
         self.for_reverse = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'supper', 'fastfood', 'salad']
         self.retry_num = 0
-        self.save_for_map = ''
+        self.recommend = ''
         self.address = ''
 
     def want_receive(self, want_give):
@@ -66,6 +66,7 @@ what_you_want = what_you_want_for_meal()
 def home():
     global what_you_want
     what_you_want = what_you_want_for_meal()
+    print('객체 새로 만듬')
     return render_template('index.html')
 
 @app.route('/result')
@@ -118,17 +119,10 @@ def feeling():
     else:
         what_you_want.feeling(feeling_give_receive)
         if len(what_you_want.chosen) == 1:
-            what_you_want.save_for_map = what_you_want.chosen[0]['name']
             return jsonify({'result': 'success', 'msg1':'', 'chosen': what_you_want.chosen[0], 'msg2':''})
         else:
             num = what_you_want.retry_num
-            what_you_want.save_for_map = what_you_want.chosen[num]['name']
             return jsonify({'result': 'success', 'msg1': '오늘은,', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
-        # print(what_you_want.chosen)
-        # print(len(what_you_want.chosen))
-        # print(what_you_want.choice_num)
-        # print(num)
-        # print(what_you_want.chosen[what_you_want.choice_num[num]])
 
 
 
@@ -144,22 +138,20 @@ def retry():
     if what_you_want.retry_num >= len(what_you_want.choice_num):
         return jsonify({'result': 'success', 'msg1': '', 'chosen':{'name':'더 이상 추천 할게 없어요 ㅠㅠ', 'url':'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'}, 'msg2': ''})
     else:
-        what_you_want.save_for_map = what_you_want.chosen[num]['name']
         return jsonify({'result': 'success', 'msg1': '그러면~', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
 
 @app.route('/to_kakao', methods=['POST'])
 def to_kakao():
     what_you_want.address = request.form['address_give']
-    return render_template(
-        'kakao.html',
-        address=what_you_want.address,
-        food_name=what_you_want.save_for_map
-    )
+    what_you_want.recommend = request.form['recommend_give']
+    return render_template('kakao.html')
 
-# @app.route('/get_info', methods=['POST'])
-# def get_info():
-#     print('여기까진 ok')
-#     return jsonify({'address': what_you_want.address, 'food_name': what_you_want.save_for_map})
+@app.route('/get_keyword', methods=['POST'])
+def get_keyword():
+    print('여기까진 ok')
+    search = f'{what_you_want.address} {what_you_want.recommend}'
+    print(search)
+    return {'search':search}
 
 
 if __name__ == '__main__':

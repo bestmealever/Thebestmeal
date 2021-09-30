@@ -207,7 +207,7 @@ function feeling() {
             } else {
                 console.log(response['chosen'])
                 temp_html = `<div class="question-h">
-        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
+        <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
         <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
@@ -266,7 +266,7 @@ function retry() {
         data: {},
         success: function (response) {
             temp_html = `<div class="question-h">
-        <p class="todays">${response['msg1']} <span class="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
+        <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
         <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
     <div class="btn-group-out">
@@ -297,11 +297,13 @@ function retry() {
 
 function to_kakao() {
     let address = $('#address').val()
+    let recommend = $('#recommend').text()
     console.log(address)
+    console.log(recommend)
     $.ajax({
         type: "POST",
         url: "/to_kakao",
-        data: {address_give: address},
+        data: {address_give: address, recommend_give: recommend},
         success: function (response) {
             window.location.href = '/kakao'
         }
