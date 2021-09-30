@@ -245,16 +245,6 @@ function feeling_no() {
         data: {},
         success: function (response) {
             alert(response['msg'])
-            //         temp_html = `<div class="question-h">
-            //     <p class="todays">오늘은 <span class="recommend">${response['msg']['name']}</span> 어때요?!</p>
-            // </div>
-            //     <img src="${response['msg']['url']}" alt="${response['msg']['name']}">
-            // <div class="btn-group-out">
-            //     <button type="button" class="btn selectbutton btn-primary" onclick="">이거 먹을게요!</button>
-            //     <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
-            // </div>`
-            //         $('#btn-group').empty()
-            //         $('#btn-group').append(temp_html)
         }
     })
 }

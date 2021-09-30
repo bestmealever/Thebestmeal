@@ -50,15 +50,6 @@ class What_you_want_for_meal:
     def retry(self):
         self.retry_num += 1
 
-
-    #
-    # def clean_want(self):
-    #     self.want = []
-    #
-    # def clean_feel(self):
-    #     self.feel = []
-
-
 what_you_want = What_you_want_for_meal()
 
 ## HTML을 주는 부분
@@ -69,16 +60,10 @@ def home():
     print('객체 새로 만듬')
     return render_template('index.html')
 
-@app.route('/result')
-def result():
-    return render_template('result.html')
-
 @app.route('/kakao')
 def kakao():
     return render_template('kakao.html')
 
-
-## API 역할을 하는 부분
 @app.route('/want', methods=['POST'])
 def want():
     want_give_receive = request.form.getlist('want_give[]')
@@ -92,7 +77,6 @@ def want():
 @app.route('/want_no', methods=['POST'])
 def want_no():
     return {'msg': '먹고 싶은게 없다니...'}
-
 
 @app.route('/yesterday', methods=['POST'])
 def yesterday():
@@ -110,7 +94,6 @@ def yesterday_no():
     print(what_you_want.want)
     return {'msg': '어제 먹은게 기억이 안나요??'}
 
-
 @app.route('/feeling', methods=['POST'])
 def feeling():
     feeling_give_receive = request.form.getlist('feeling_give[]')
@@ -124,12 +107,9 @@ def feeling():
             num = what_you_want.retry_num
             return jsonify({'result': 'success', 'msg1': '오늘은,', 'chosen': what_you_want.chosen[what_you_want.choice_num[num]], 'msg2': '어때요?!'})
 
-
-
 @app.route('/feeling_no', methods=['POST'])
 def feeling_no():
     return {'msg': '하나 이상 선택해줘야 추천을 하지...!!!'}
-
 
 @app.route('/retry', methods=['POST'])
 def retry():
@@ -152,7 +132,6 @@ def get_keyword():
     search = f'{what_you_want.address} {what_you_want.recommend}'
     print(search)
     return {'search':search}
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
