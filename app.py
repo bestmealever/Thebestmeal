@@ -11,7 +11,7 @@ client = MongoClient('localhost', 27017)
 
 db = client.team_project
 
-class what_you_want_for_meal:
+class What_you_want_for_meal:
     def __init__(self):
         self.for_reverse = ['korean', 'chinese', 'japanese', 'western', 'snack', 'bread', 'supper', 'fastfood', 'salad']
         self.retry_num = 0
@@ -59,13 +59,13 @@ class what_you_want_for_meal:
     #     self.feel = []
 
 
-what_you_want = what_you_want_for_meal()
+what_you_want = What_you_want_for_meal()
 
 ## HTML을 주는 부분
 @app.route('/')
 def home():
     global what_you_want
-    what_you_want = what_you_want_for_meal()
+    what_you_want = What_you_want_for_meal()
     print('객체 새로 만듬')
     return render_template('index.html')
 
