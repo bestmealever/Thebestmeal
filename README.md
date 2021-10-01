@@ -41,3 +41,4 @@ git check out main (메인으로 빠져나오기)
 
 - 이성우: sw
 - 신한국: hk
+- 장민 : jm / jm_front
