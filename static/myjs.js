@@ -1,8 +1,9 @@
 function want() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
-            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        if (btnCheck.is(":checked") === true) {
+            btn_val.push(btnCheck.val())
         }
     }
     console.log(btn_val)
@@ -11,10 +12,10 @@ function want() {
         url: "/want",
         data: {want_give: btn_val},
         success: function (response) {
-            if (response['result'] == 'fail') {
+            if (response['result'] === 'fail') {
                 alert(response['msg'])
             } else {
-                temp_html = `<div class="question-h">
+                let temp_html = `<div class="question-h">
         <p class="questionStyle"> Q.2 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
@@ -41,8 +42,9 @@ function want() {
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
-                $('#btn-group').empty()
-                $('#btn-group').append(temp_html)
+                let btnGroup = $('#btn-group')
+                btnGroup.empty()
+                btnGroup.append(temp_html)
 
             }
         }
@@ -56,7 +58,7 @@ function want_no() {
         data: {},
         success: function (response) {
             alert(response['msg'])
-            temp_html = `        <div class="question-h">
+            let temp_html = `        <div class="question-h">
             <p class="questionStyle"> Q.2 그럼 어제는 뭐 먹었어요? </p>
         </div>
         <div class="btn-group-in">
@@ -93,8 +95,9 @@ function want_no() {
             <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday()">다음</button>
             <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday_no()">잘 모르겠어요</button>
         </div>`
-            $('#btn-group').empty()
-            $('#btn-group').append(temp_html)
+            let btnGroup = $('#btn-group')
+            btnGroup.empty()
+            btnGroup.append(temp_html)
 
         }
     })
@@ -104,8 +107,9 @@ function want_no() {
 function yesterday() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
-            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        if (btnCheck.is(":checked") === true) {
+            btn_val.push(btnCheck.val())
         }
     }
     $.ajax({
@@ -113,10 +117,10 @@ function yesterday() {
         url: "/yesterday",
         data: {yesterday_give: btn_val},
         success: function (response) {
-            if (response['result'] == 'fail') {
+            if (response['result'] === 'fail') {
                 alert(response['msg'])
             } else {
-                temp_html = `<div class="question-h">
+                let temp_html = `<div class="question-h">
         <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
@@ -143,8 +147,9 @@ function yesterday() {
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
-                $('#btn-group').empty()
-                $('#btn-group').append(temp_html)
+                let btnGroup = $('#btn-group')
+                btnGroup.empty()
+                btnGroup.append(temp_html)
             }
         }
     })
@@ -157,7 +162,7 @@ function yesterday_no() {
         data: {},
         success: function (response) {
             alert(response['msg'])
-            temp_html = `<div class="question-h">
+            let temp_html = `<div class="question-h">
         <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
     </div>
     <div class="btn-group-in">
@@ -184,8 +189,9 @@ function yesterday_no() {
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
         <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
     </div>`
-            $('#btn-group').empty()
-            $('#btn-group').append(temp_html)
+            let btnGroup = $('#btn-group')
+            btnGroup.empty()
+            btnGroup.append(temp_html)
         }
     })
 }
@@ -193,8 +199,9 @@ function yesterday_no() {
 function feeling() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        if ($(`input:checkbox[id="btncheck${i + 1}"]`).is(":checked") == true) {
-            btn_val.push($(`input:checkbox[id="btncheck${i + 1}"]`).val())
+        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        if (btnCheck.is(":checked") === true) {
+            btn_val.push(btnCheck.val())
         }
     }
     $.ajax({
@@ -202,14 +209,14 @@ function feeling() {
         url: "/feeling",
         data: {feeling_give: btn_val},
         success: function (response) {
-            if (response['result'] == 'fail') {
+            if (response['result'] === 'fail') {
                 alert(response['msg'])
             } else {
                 console.log(response['chosen'])
-                temp_html = `<div class="question-h">
+                let temp_html = `<div class="question-h">
         <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
-        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
+        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
     <div class="btn-group-out">
         <button type="button" class="btn selectbutton btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">이거 먹을게요!</button>
         <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
@@ -230,8 +237,9 @@ function feeling() {
             </div>
         </div>
     </div>`
-                $('#btn-group').empty()
-                $('#btn-group').append(temp_html)
+                let btnGroup = $('#btn-group')
+                btnGroup.empty()
+                btnGroup.append(temp_html)
             }
         }
     })
@@ -255,10 +263,10 @@ function retry() {
         url: "/retry",
         data: {},
         success: function (response) {
-            temp_html = `<div class="question-h">
+            let temp_html = `<div class="question-h">
         <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
     </div>
-        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}";"></div>
+        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
     <div class="btn-group-out">
         <button type="button" class="btn selectbutton btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">이거 먹을게요!</button>
         <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
@@ -279,8 +287,9 @@ function retry() {
             </div>
         </div>
     </div>`
-            $('#btn-group').empty()
-            $('#btn-group').append(temp_html)
+            let btnGroup = $('#btn-group')
+            btnGroup.empty()
+            btnGroup.append(temp_html)
         }
     })
 }
@@ -294,7 +303,7 @@ function to_kakao() {
         type: "POST",
         url: "/to_kakao",
         data: {address_give: address, recommend_give: recommend},
-        success: function (response) {
+        success: function () {
             window.location.href = '/kakao'
         }
     })

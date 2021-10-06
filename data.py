@@ -18,9 +18,6 @@ client = MongoClient(uri)
 db = client.team_project
 
 for i in range(len(data)):
-    doc = {}
-    doc['name'] = data.iloc[i]['title']
-    doc['category'] = data.iloc[i]['category'].split(',')
-    doc['emotion'] = data.iloc[i]['emotion'].split(',')
-    doc['url'] = data.iloc[i]['url']
+    doc = {'name': data.iloc[i]['title'], 'category': data.iloc[i]['category'].split(','),
+           'emotion': data.iloc[i]['emotion'].split(','), 'url': data.iloc[i]['url']}
     db.team_project.insert_one(doc)
