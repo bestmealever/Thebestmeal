@@ -2,14 +2,15 @@
 from flask import Flask, render_template, jsonify, request
 from pymongo import MongoClient
 import random
+import os
 
 app = Flask(__name__)
 
 # 배포서버
-# client = MongoClient('mongodb://test:test@localhost', 27017)
+client = MongoClient(os.environ.get("MONGO_DB_PATH"))
 
 # 로컬서버
-client = MongoClient('localhost', 27017)
+# client = MongoClient('localhost', 27017)
 
 db = client.team_project
 

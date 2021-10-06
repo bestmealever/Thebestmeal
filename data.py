@@ -1,14 +1,16 @@
 from pymongo import MongoClient
 import pandas as pd
+# import os
 
 data = pd.read_csv('food_final.csv', encoding='utf-8-sig', index_col=False)
 
 # 배포서버
-MONGO_HOST = "13.209.11.221"
+# 아래 코드로 실행하면 DB파일이 실행은 되나, 환경변수로 처리하는 것이 제한됨.
+MONGO_HOST = "52.78.94.204"
 MONGO_PORT = "27017"
 MONGO_DB = "team_project"
-MONGO_USER = "test"
-MONGO_PASS = "test"
+MONGO_USER = "..."
+MONGO_PASS = "..."
 
 uri = "mongodb://{}:{}@{}:{}/{}?authSource=admin".format(MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT, MONGO_DB)
 client = MongoClient(uri)
