@@ -68,16 +68,16 @@ class WhatYouWantForMeal:
     def retry(self):
         self.retry_num += 1
 
-
 what_you_want = WhatYouWantForMeal()
 
 
 # HTML을 주는 부분
-
+# 추천하기/추천받기를 선택하는 home 칸.
 @app.route('/')
 def home():
     return render_template('index.html')
 
+# 추천하기를 클릭하면 main 으로 감.
 @app.route('/main')
 def main():
     token_receive = request.cookies.get('mytoken')
@@ -93,6 +93,11 @@ def main():
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
+
+@app.route('/myrecommend')
+def myrecommend():
+    return render_template('myrecommend.html')
+
 
 @app.route('/recommendation')
 def recommendation():
