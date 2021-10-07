@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>오늘 뭐 먹지?</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@200;500&family=Roboto:wght@100&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Sunflower:wght@300;500&display=swap"
+          rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+</head>
+
+
+<body>
+
+<!--타이틀부분-->
+<div class="titleBox">
+    <div class="mypage">
+<!--        <button type="button" class="btn-1 btn-outline-danger">Home</button>-->
+<!--        <button type="button" class="btn-1 btn-outline-success">Mypage</button>-->
+    </div>
+    <h1 class="title">오늘 뭐 먹지?</h1>
+    <p class="titleText">간단한 질문에 답하고, 오늘의 식사를 추천 받아 보세요!</p>
+
+</div>
+
+
+<div id="wrap">
+    <div id="btn-group" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <div class="question-h">
+            <p class="questionStyle"> Q.1 어떤 종류의 음식이 땡기시나요? </p>
+        </div>
+
+        <div class="btn-group-in">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="korean">
+            <label class="btn btn-outline-primary choice" for="btncheck1">한식</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="chinese">
+            <label class="btn btn-outline-primary choice" for="btncheck2">중식</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="japanese">
+            <label class="btn btn-outline-primary choice" for="btncheck3">일식</label>
+        </div>
+        <div class="btn-group-in">
+            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="western">
+            <label class="btn btn-outline-primary choice" for="btncheck4">양식</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="snack">
+            <label class="btn btn-outline-primary choice" for="btncheck5">분식</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="bread">
+            <label class="btn btn-outline-primary choice" for="btncheck6">빵</label>
+        </div>
+        <div class="btn-group-in">
+            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" value="supper">
+            <label class="btn btn-outline-primary choice" for="btncheck7">야식</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off" value="fastfood">
+            <label class="btn btn-outline-primary choice" for="btncheck8">패스트푸드</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" value="salad">
+            <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
+        </div>
+        <div class="btn-group-out">
+            <button type="button" class="btn selectbutton btn-primary next" onclick="want()">다음</button>
+            <button type="button" class="btn selectbutton btn-primary next" onclick="want_no()">땡기는게 없어요</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

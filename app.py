@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
 import random
+import jwt
+import hashlib
+from werkzeug.utils import secure_filename
+
 import os
 
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
+
+SECRET_KEY = 'SPARTA'
 
 # 배포서버
-client = MongoClient(os.environ.get("MONGO_DB_PATH"))
+# client = MongoClient(os.environ.get("MONGO_DB_PATH"))
 
 # 로컬서버
-# client = MongoClient('localhost', 27017)
-
+client = MongoClient('localhost', 27017)
 db = client.team_project
-
 
 class WhatYouWantForMeal:
     def __init__(self):
@@ -65,13 +71,34 @@ what_you_want = WhatYouWantForMeal()
 
 
 # HTML을 주는 부분
+
 @app.route('/')
 def home():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        return render_template('index.html')
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+@app.route('/login')
+def login():
+    msg = request.args.get("msg")
+    return render_template('login.html', msg=msg)
+
+@app.route('/recommendation')
+def recommendation():
     global what_you_want
     what_you_want = WhatYouWantForMeal()
     print('객체 새로 만듬')
-    return render_template('index.html')
+    return render_template('recommendation.html')
 
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 @app.route('/kakao')
 def kakao():
