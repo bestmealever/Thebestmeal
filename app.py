@@ -77,7 +77,7 @@ what_you_want = WhatYouWantForMeal()
 def home():
     return render_template('index.html')
 
-# 추천하기를 클릭하면 main 으로 감.
+# 로그인 버전 1 - 추천하기를 클릭하면 페이지 로그인
 @app.route('/main')
 def main():
     token_receive = request.cookies.get('mytoken')
@@ -93,6 +93,11 @@ def main():
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
+
+# 로그인 버전 2 - 추천하기를 클릭하면 모달 로그인
+@app.route('/modallogin')
+def modallogin():
+    return render_template('modalindex.html')
 
 @app.route('/myrecommend')
 def myrecommend():
