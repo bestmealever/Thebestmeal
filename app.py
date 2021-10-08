@@ -70,8 +70,9 @@ class WhatYouWantForMeal:
 
 what_you_want = WhatYouWantForMeal()
 
+
 # HTML을 주는 부분
-# 추천하기/추천받기를 선택하는 home 칸.
+
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
@@ -85,42 +86,12 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-#v2 로그인 완료시 나타나는 마이페이지
-# @app.route('/main')
-# def main():
-    # token_receive = request.cookies.get('mytoken')
-    # try:
-    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-    #     return render_template('login.html')
-    # except jwt.ExpiredSignatureError:
-    #     return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
-    # except jwt.exceptions.DecodeError:
-    #     return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-
-# 로그인 버전 1 - 추천하기를 클릭하면 페이지 로그인
-# @app.route('/main')
-# def main():
-    # token_receive = request.cookies.get('mytoken')
-    # try:
-    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-    #     return render_template('login.html')
-    # except jwt.ExpiredSignatureError:
-    #     return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
-    # except jwt.exceptions.DecodeError:
-    #     return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-
-
-#v1 로그인
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
-
-@app.route('/mypage')
-def myrecommend():
-    return render_template('mypage.html')
 
 @app.route('/recommendation')
 def recommendation():
@@ -129,9 +100,6 @@ def recommendation():
     print('객체 새로 만듬')
     return render_template('recommendation.html')
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
 
 @app.route('/kakao')
 def kakao():
@@ -158,6 +126,7 @@ def sign_in():
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다'})
 
+
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
     username_receive = request.form['username_give']
@@ -174,11 +143,13 @@ def sign_up():
     db.users.insert_one(doc)
     return jsonify({'result': 'success'})
 
+
 @app.route('/sign_up/check_dup', methods=['POST'])
 def check_dup():
     username_receive = request.form['username_give']
     exists = bool(db.users.find_one({"username": username_receive}))
     return jsonify({'result': 'success', 'exists': exists})
+
 
 @app.route('/want', methods=['POST'])
 def want():
@@ -191,6 +162,7 @@ def want():
         return jsonify({'result': 'success'})
 
 
+#추천 기능들
 @app.route('/want_no', methods=['POST'])
 def want_no():
     return {'msg': '먹고 싶은게 없다니...'}
