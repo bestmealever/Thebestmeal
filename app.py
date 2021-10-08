@@ -70,39 +70,57 @@ class WhatYouWantForMeal:
 
 what_you_want = WhatYouWantForMeal()
 
-
 # HTML을 주는 부분
 # 추천하기/추천받기를 선택하는 home 칸.
 @app.route('/')
 def home():
-    return render_template('index.html')
-
-# 로그인 버전 1 - 추천하기를 클릭하면 페이지 로그인
-@app.route('/main')
-def main():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        return render_template('login.html')
+        user_info = db.users.find_one({"username": payload["id"]})
+        return render_template('index.html', user_info=user_info)
+
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+#v2 로그인 완료시 나타나는 마이페이지
+# @app.route('/main')
+# def main():
+    # token_receive = request.cookies.get('mytoken')
+    # try:
+    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    #     return render_template('login.html')
+    # except jwt.ExpiredSignatureError:
+    #     return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    # except jwt.exceptions.DecodeError:
+    #     return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+# 로그인 버전 1 - 추천하기를 클릭하면 페이지 로그인
+# @app.route('/main')
+# def main():
+    # token_receive = request.cookies.get('mytoken')
+    # try:
+    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    #     return render_template('login.html')
+    # except jwt.ExpiredSignatureError:
+    #     return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    # except jwt.exceptions.DecodeError:
+    #     return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+#v1 로그인
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
-# 로그인 버전 2 - 추천하기를 클릭하면 모달 로그인
-@app.route('/modallogin')
-def modallogin():
-    return render_template('modalindex.html')
 
-@app.route('/myrecommend')
+@app.route('/mypage')
 def myrecommend():
-    return render_template('myrecommend.html')
-
+    return render_template('mypage.html')
 
 @app.route('/recommendation')
 def recommendation():

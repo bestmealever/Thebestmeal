@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="696d4c08-25b1-4481-a0a4-7c2effcb077d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/static/profile_pics/profile_placeholder.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/whattoeat_banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modalindex.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modallogin2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/myrecommend.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/album.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/albumorigin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/mycss.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/mycss.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modalindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modallogin2.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sparta/project04" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -152,7 +150,7 @@
       <workItem from="1633520527073" duration="125000" />
       <workItem from="1633524862319" duration="8045000" />
       <workItem from="1633538045202" duration="3102000" />
-      <workItem from="1633579407714" duration="16644000" />
+      <workItem from="1633579407714" duration="36198000" />
     </task>
     <servers />
   </component>
@@ -188,11 +186,23 @@
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/album.html</url>
+          <line>138</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/album.html</url>
+          <line>85</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Thebestmeal$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1633593925266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Thebestmeal$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1633653533661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Thebestmeal$data.coverage" NAME="data Coverage Results" MODIFIED="1633530970160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
