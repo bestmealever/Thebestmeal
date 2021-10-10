@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="696d4c08-25b1-4481-a0a4-7c2effcb077d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/album.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +112,9 @@
       <workItem from="1633572143651" duration="20000" />
       <workItem from="1633572508818" duration="58000" />
       <workItem from="1633572916580" duration="2368000" />
-      <workItem from="1633585145494" duration="8180000" />
+      <workItem from="1633585145494" duration="9084000" />
+      <workItem from="1633669370574" duration="4000" />
+      <workItem from="1633684379835" duration="1736000" />
     </task>
     <servers />
   </component>
@@ -131,6 +131,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Thebestmeal$data.coverage" NAME="data Coverage Results" MODIFIED="1633571175471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
