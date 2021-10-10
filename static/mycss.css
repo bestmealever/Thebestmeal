@@ -1,102 +1,199 @@
-* {
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 200;
-    /*font-family: 'Roboto', sans-serif;*/
+/*{#네비게이션 바 색 설정#}*/
+.navbar {
+    background-color: #FFD6BF;
 }
 
-/*헤더 css*/
-
-.mypage {
-    height: 50px;
-    text-align: center;
+/*{#로그인 버튼 설정#}*/
+.log-in {
+    background-color: #FFA26E !important;
+    font-weight: bold;
 }
 
-.btn-outline-danger {
-    margin: auto;
-    display: inline-block;
-    width: 100px;
-}
-.btn-outline-success {
-    margin: auto;
-    display: inline-block;
-    width: 100px;
+/*{#로그인 버튼 효과 설정#}*/
+.log-in:hover {
+    color: white !important;
+    background-color: #FFB890 !important;
 }
 
-.titleBox {
-    height: 200px;
-    padding: 10px;
-    background-color: #fbe9e7;
-}
-
-.title {
+/*{#네비게이션 오늘 뭐먹지? 폰트 설정#}*/
+.navbar-brand > a {
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 55pt;
-    text-align: center;
+    font-size: 20px;
 }
 
-.titleText {
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 200;
-    text-align: center;
+/*{#히어로 높이 지정 및 배경색 설정#}*/
+.hero {
+    height: 340px;
+
+    background-color: #fafafa;
 }
 
+/*home을 제외한 모든 페이지 상단 히어로 설정*/
+.sub-hero {
+    height: 230px;
 
-/*Question페이지 css*/
-
-.questionStyle {
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 400;
-    text-align: center;
-    font-size: 20pt;
+    background-color: #fafafa;
 }
 
+/*{#히어로 본문 폰트 설정#}*/
+.main-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 70px;
+    font-weight: normal;
+    color: black;
+
+    min-width: 1500px;
+}
+.sub-title {
+    min-width: 1500px;
+
+    font-size: 15px;
+}
+
+/*{#히어로 버튼박스 위치 설정#}*/
+.button-box {
+    margin: 40px auto 0 auto;
+
+    min-width: 1500px;
+}
+
+/*{#버튼박스 내 버튼 테마 설정#}*/
+.main-button {
+    width: 250px;
+    height: 100px;
+
+    margin: 0 25px 0 25px;
+    background-color: #FFA26E;
+    border: none;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    box-shadow: rgb(223 223 223) 10px 10px 10px -5px;
+}
+
+/*{#버튼 위 포인터 위치 시 효과 설정#}*/
+.main-button:hover {
+    color: white;
+    background-color: #FFB890;
+}
+
+/*{#카드 정렬#}*/
+.cards-4 {
+    width: 1500px;
+    margin: 0px auto 30px auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/*{#카드 크기 지정#}*/
+.card {
+    width: 350px;
+
+    margin-bottom: 20px;
+}
+
+/*{#카드 내 임시 좋아요 표시#}*/
+.fa-heart, .like-num {
+    font-size: 18px;
+    color: orangered;
+}
+
+/*카테고리 페이지 본문 틀*/
 #wrap {
     width: 800px;
     margin: auto;
     padding: 20px 70px 50px 70px;
-    /*background-color: aquamarine;*/
 }
 
-.btn-group {
-    display: block;
-    padding: 10px;
+/*Q.N 질문 폰트 설정*/
+.question-h {
+    text-align: center;
+    padding: 30px 0px 0px 0px;
+}
+.question-style {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: black;
 }
 
-.btn-group .btn-group-in {
+/*카테고리 버튼 구성 창 틀 (별 차이 없는 듯..?)*/
+/*.button-group {*/
+/*    display: block;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*버튼 정렬*/
+.button-group .button-group-in {
     margin: 0 auto;
     padding: 10px;
     display: flex;
 }
 
-input[type=checkbox] {
-    transform: scale(1.5);
+/*체크박스 숨김 처리*/
+.select-category {
+    display: none;
 }
 
-.btn.btn-outline-primary.choice {
+/*체크박스 버튼화*/
+.category {
+    display: block;
+    position: relative;
     width: 200px;
     height: 100px;
-    margin: auto;
-    line-height: 80px;
-}
+    margin: 0 10px 0 10px;
 
-
-/*결과페이지 관련 css*/
-
-.question-h {
+    background-color: gainsboro;
+    border-radius: 30px;
     text-align: center;
-    padding: 30px 0px 0px 0px;
+    font-size: 20px;
+    padding-top: 35px;
+
+    cursor: pointer;
 }
 
+/*체크박스 활성화*/
+.select-category:checked + .category {
+    background-color: #FFB890;
+    color: white;
+}
+
+/*다음 버튼 틀 위치 설정*/
+.button-group-out {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+/*다음 버튼 배치 및 모양 설정*/
+.next-stage {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 50px;
+    margin: 30px 10px 0 10px;
+}
+
+/*결과페이지 추천 문구 설정*/
 .todays {
     font-weight: 200;
     font-size: 25px;
 }
 
+/*추천 문구 중 강조할 음식 이름 설정*/
 #recommend {
     font-weight: 400;
     font-size: 25px;
 }
 
+/*음식 이미지 설정*/
 .mealimg {
     width: 400px;
     height: 300px;
@@ -106,65 +203,195 @@ input[type=checkbox] {
 }
 
 
-/*하단 버튼 관련 css*/
-
-.btn-group-out {
-    width: 600px;
-    margin: auto auto 30px auto;
-    text-align: center;
-}
-
-.btn.selectbutton {
-    /* 생략 */
-    margin: 30px auto 0px auto;
-    padding: 0.5rem 1rem;
-    width: 200px;
-
-    text-align: center;
-    text-decoration: none;
-    font-weight: 400;
-
-    display: inline-block;
-
-    border: indianred 2px solid;
-    border-radius: 20px;
-
-    cursor: pointer;
-
-    transition: 0.5s;
-}
-
-.btn {
-    width: 200px;
-    background: white;
-    font-weight: 400;
-    color: indianred;
-    border: indianred 2px solid;
-    border-radius: 20px;
-    margin: 0 10px 0 10px;
-
-    /*-webkit-tap-highlight-color: transparent;*/
-}
-/*.btn:hover {*/
-/*    background-color: indianred;*/
-/*    border: indianred 2px solid;*/
-/*} 아래에 합침.*/
-
-.btn:hover, .btn:focus, .btn:active, .btn.active {
-    background-color: indianred;
-    border-color: indianred;
-    font-color: #fff;
-}
-
-input[type = "checkbox"]:checked + .btn {
-    background-color: indianred;
-    border-color: indianred;
-}
+/*---------------------------------------------------*/
 
 
+/*카카오 지도 관련 스타일 지정*/
+/*카카오 지도 크기 및 위치 설정*/
 .map_wrap {
     width: 800px;
     margin: auto;
     padding: 20px 70px 50px 70px;
-    /*background-color: aquamarine;*/
+}
+
+.map_wrap, .map_wrap * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    font-size: 12px;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+.map_wrap {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+#menu_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    margin: 10px 0 30px 10px;
+    padding: 5px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.bg_white {
+    background: #fff;
+}
+
+#menu_wrap hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #5F5F5F;
+    margin: 3px 0;
+}
+
+#menu_wrap .option {
+    text-align: center;
+}
+
+#menu_wrap .option p {
+    margin: 10px 0;
+}
+
+#menu_wrap .option button {
+    margin-left: 5px;
+}
+
+#placesList li {
+    list-style: none;
+}
+
+#placesList .item {
+    position: relative;
+    border-bottom: 1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+}
+
+#placesList .item span {
+    display: block;
+    margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#placesList .item .info {
+    padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+    color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+    padding-left: 26px;
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+}
+
+#placesList .info .tel {
+    color: #009900;
+}
+
+#placesList .item .markerbg {
+    float: left;
+    position: absolute;
+    width: 36px;
+    height: 37px;
+    margin: 10px 0 0 10px;
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}
+
+#pagination {
+    margin: 10px auto;
+    text-align: center;
+}
+
+#pagination a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#pagination .on {
+    font-weight: bold;
+    cursor: default;
+    color: #777;
 }

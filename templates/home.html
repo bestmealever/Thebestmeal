@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Webpage Title -->
+    <title>오늘 뭐 먹지? | Main</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--파비콘-->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon2.ico" />
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!--<link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">-->
+    <link href="../static/mycss.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    오늘 뭐 먹지?
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button log-in is-primary">
+                                <strong>로그인</strong>
+                            </a>
+                            <a class="button is-light">
+                                아무 버튼
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-body has-text-centered">
+                <p class="main-title">
+                    오늘 뭐 먹지?
+                </p>
+                <p class="sub-title">
+                    간단한 질문에 답하고, 오늘의 식사를 추천 받아 보세요!
+                </p>
+                <div class="button-box">
+                    <button class="main-button">추천받기</button>
+                    <button class="main-button">추천하기</button>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="main-info">
+            <p>오늘 가장 많이 선택한 음식들입니다!</p>
+        </div>
+        <div class="cards-4">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-4">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">장민</p>
+                            <p class="subtitle is-6">@jangmin123</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        오늘 저녁은 이것이 어떤지 모르것는디?
+                        <br>
+                        <div class="like">
+                            <span class="icon is-small">
+                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
+                                <span class="like-num">12</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>오늘 뭐 먹지?</strong> made by
+                <a href="https://github.com/bestmealever/Thebestmeal">이거사조</a>. <br>
+                이거사조 is Team 4 in 내일배움캠프. <br>
+                Welcome to <a href="https://spartacodingclub.kr/">스파르타코딩클럽</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

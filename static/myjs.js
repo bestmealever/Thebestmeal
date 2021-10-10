@@ -1,7 +1,7 @@
 function want() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        let btnCheck = $(`input:checkbox[id="chk${i + 1}"]`)
         if (btnCheck.is(":checked") === true) {
             btn_val.push(btnCheck.val())
         }
@@ -16,33 +16,33 @@ function want() {
                 alert(response['msg'])
             } else {
                 let temp_html = `<div class="question-h">
-        <p class="questionStyle"> Q.2 오늘 기분은 어때요? </p>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
-        <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
-        <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
-        <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
-        <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
-        <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
-        <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
-    </div>
-    <div class="btn-group-out">
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
-    </div>`
-                let btnGroup = $('#btn-group')
+                                    <p class="question-style"> Q.2 오늘 기분은 어때요? </p>
+                                </div>
+                                <div class="button-group-in">
+                                    <input type="checkbox" id="chk1" class="select-category" value="no_time">
+                                    <label class="category" for="chk1">시간이 없어요</label>
+                        
+                                    <input type="checkbox" id="chk2" class="select-category" value="many_time">
+                                    <label class="category" for="chk2">시간 많아요!</label>
+                        
+                                    <input type="checkbox" id="chk3" class="select-category" value="perfect">
+                                    <label class="category" for="chk3">완벽한 저녁이 필요해요!</label>
+                                </div>
+                                <div class="button-group-in">
+                                    <input type="checkbox" id="chk4" class="select-category" value="needsugar">
+                                    <label class="category" for="chk4">당 떨어져요 ㅠ</label>
+                        
+                                    <input type="checkbox" id="chk5" class="select-category" value="stressed">
+                                    <label class="category" for="chk5">스트레스 받았어요</label>
+                        
+                                    <input type="checkbox" id="chk6" class="select-category" value="fatty">
+                                    <label class="category" for="chk6">기름진게 땡기네요!</label>
+                                </div>
+                                <div class="button-group-out">
+                                    <button class="button next-stage" onclick="feeling()">다음</button>
+                                    <button class="button next-stage" onclick="feeling_no()">땡기는게 없어요</button>
+                                </div>`
+                let btnGroup = $('#button-group')
                 btnGroup.empty()
                 btnGroup.append(temp_html)
 
@@ -59,43 +59,43 @@ function want_no() {
         success: function (response) {
             alert(response['msg'])
             let temp_html = `        <div class="question-h">
-            <p class="questionStyle"> Q.2 그럼 어제는 뭐 먹었어요? </p>
-        </div>
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="korean">
-            <label class="btn btn-outline-primary choice" for="btncheck1">한식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="chinese">
-            <label class="btn btn-outline-primary choice" for="btncheck2">중식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="japanese">
-            <label class="btn btn-outline-primary choice" for="btncheck3">일식</label>
-        </div>
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="western">
-            <label class="btn btn-outline-primary choice" for="btncheck4">양식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="snack">
-            <label class="btn btn-outline-primary choice" for="btncheck5">분식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="bread">
-            <label class="btn btn-outline-primary choice" for="btncheck6">빵</label>
-        </div>
-        <div class="btn-group-in">
-            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" value="supper">
-            <label class="btn btn-outline-primary choice" for="btncheck7">야식</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off" value="fastfood">
-            <label class="btn btn-outline-primary choice" for="btncheck8">패스트푸드</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" value="salad">
-            <label class="btn btn-outline-primary choice" for="btncheck9">샐러드</label>
-        </div>
-        <div class="btn-group-out">
-            <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday()">다음</button>
-            <button type="button" class="btn selectbutton btn-primary next" onclick="yesterday_no()">잘 모르겠어요</button>
-        </div>`
-            let btnGroup = $('#btn-group')
+                                        <p class="question-style"> Q.2 그럼 어제는 뭐 먹었어요? </p>
+                                    </div>
+                                    <div class="button-group-in">
+                                        <input type="checkbox" id="chk1" class="select-category" value="korean">
+                                        <label class="category" for="chk1">한식</label>
+                            
+                                        <input type="checkbox" id="chk2" class="select-category" value="chinese">
+                                        <label class="category" for="chk2">중식</label>
+                            
+                                        <input type="checkbox" id="chk3" class="select-category" value="japanese">
+                                        <label class="category" for="chk3">일식</label>
+                                    </div>
+                                    <div class="button-group-in">
+                                        <input type="checkbox" id="chk4" class="select-category" value="western">
+                                        <label class="category" for="chk4">양식</label>
+                            
+                                        <input type="checkbox" id="chk5" class="select-category" value="snack">
+                                        <label class="category" for="chk5">분식</label>
+                            
+                                        <input type="checkbox" id="chk6" class="select-category" value="bread">
+                                        <label class="category" for="chk6">빵</label>
+                                    </div>
+                                    <div class="button-group-in">
+                                        <input type="checkbox" id="chk7" class="select-category" value="supper">
+                                        <label class="category" for="chk7">야식</label>
+                            
+                                        <input type="checkbox" id="chk8" class="select-category" value="fastfood">
+                                        <label class="category" for="chk8">패스트푸드</label>
+                            
+                                        <input type="checkbox" id="chk9" class="select-category" value="salad">
+                                        <label class="category" for="chk9">샐러드</label>
+                                    </div>
+                                    <div class="button-group-out">
+                                        <button class="button next-stage" onclick="yesterday()">다음</button>
+                                        <button class="button next-stage" onclick="yesterday_no()">잘 모르겠어요</button>
+                                    </div>`
+            let btnGroup = $('#button-group')
             btnGroup.empty()
             btnGroup.append(temp_html)
 
@@ -107,7 +107,7 @@ function want_no() {
 function yesterday() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        let btnCheck = $(`input:checkbox[id="chk${i + 1}"]`)
         if (btnCheck.is(":checked") === true) {
             btn_val.push(btnCheck.val())
         }
@@ -121,33 +121,33 @@ function yesterday() {
                 alert(response['msg'])
             } else {
                 let temp_html = `<div class="question-h">
-        <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
-        <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
-        <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
-        <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
-        <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
-        <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
-        <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
-    </div>
-    <div class="btn-group-out">
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
-    </div>`
-                let btnGroup = $('#btn-group')
+                                    <p class="question-style"> Q.3 오늘 기분은 어때요? </p>
+                                </div>
+                                <div class="button-group-in">
+                                    <input type="checkbox" id="chk1" class="select-category" value="no_time">
+                                    <label class="category" for="chk1">시간이 없어요</label>
+                        
+                                    <input type="checkbox" id="chk2" class="select-category" value="many_time">
+                                    <label class="category" for="chk2">시간 많아요!</label>
+                        
+                                    <input type="checkbox" id="chk3" class="select-category" value="perfect">
+                                    <label class="category" for="chk3">완벽한 저녁이 필요해요!</label>
+                                </div>
+                                <div class="button-group-in">
+                                    <input type="checkbox" id="chk4" class="select-category" value="needsugar">
+                                    <label class="category" for="chk4">당 떨어져요 ㅠ</label>
+                        
+                                    <input type="checkbox" id="chk5" class="select-category" value="stressed">
+                                    <label class="category" for="chk5">스트레스 받았어요</label>
+                        
+                                    <input type="checkbox" id="chk6" class="select-category" value="fatty">
+                                    <label class="category" for="chk6">기름진게 땡기네요!</label>
+                                </div>
+                                <div class="button-group-out">
+                                    <button class="button next-stage" onclick="feeling()">다음</button>
+                                    <button class="button next-stage" onclick="feeling_no()">잘 모르겠어요</button>
+                                </div>`
+                let btnGroup = $('#button-group')
                 btnGroup.empty()
                 btnGroup.append(temp_html)
             }
@@ -163,33 +163,33 @@ function yesterday_no() {
         success: function (response) {
             alert(response['msg'])
             let temp_html = `<div class="question-h">
-        <p class="questionStyle"> Q.3 오늘 기분은 어때요? </p>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" value="no_time">
-        <label class="btn btn-outline-primary choice" for="btncheck1">시간이 없어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" value="many_time">
-        <label class="btn btn-outline-primary choice" for="btncheck2">시간 많아요!</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" value="perfect">
-        <label class="btn btn-outline-primary choice" for="btncheck3">완벽한 저녁이 필요해요!</label>
-    </div>
-    <div class="btn-group-in">
-        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" value="needsugar">
-        <label class="btn btn-outline-primary choice" for="btncheck4">당 떨어져요 ㅠ</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" value="stressed">
-        <label class="btn btn-outline-primary choice" for="btncheck5">스트레스 받았어요</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" value="fatty">
-        <label class="btn btn-outline-primary choice" for="btncheck6">기름진게 땡기네요!</label>
-    </div>
-    <div class="btn-group-out">
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling()">다음</button>
-        <button type="button" class="btn selectbutton btn-primary next" onclick="feeling_no()">잘 모르겠어요</button>
-    </div>`
-            let btnGroup = $('#btn-group')
+                                <p class="question-style"> Q.3 오늘 기분은 어때요? </p>
+                            </div>
+                            <div class="button-group-in">
+                                    <input type="checkbox" id="chk1" class="select-category" value="no_time">
+                                    <label class="category" for="chk1">시간이 없어요</label>
+                        
+                                    <input type="checkbox" id="chk2" class="select-category" value="many_time">
+                                    <label class="category" for="chk2">시간 많아요!</label>
+                        
+                                    <input type="checkbox" id="chk3" class="select-category" value="perfect">
+                                    <label class="category" for="chk3">완벽한 저녁이 필요해요!</label>
+                                </div>
+                                <div class="button-group-in">
+                                    <input type="checkbox" id="chk4" class="select-category" value="needsugar">
+                                    <label class="category" for="chk4">당 떨어져요 ㅠ</label>
+                        
+                                    <input type="checkbox" id="chk5" class="select-category" value="stressed">
+                                    <label class="category" for="chk5">스트레스 받았어요</label>
+                        
+                                    <input type="checkbox" id="chk6" class="select-category" value="fatty">
+                                    <label class="category" for="chk6">기름진게 땡기네요!</label>
+                                </div>
+                                <div class="button-group-out">
+                                    <button class="button next-stage" onclick="feeling()">다음</button>
+                                    <button class="button next-stage" onclick="feeling_no()">잘 모르겠어요</button>
+                                </div>`
+            let btnGroup = $('#button-group')
             btnGroup.empty()
             btnGroup.append(temp_html)
         }
@@ -199,7 +199,7 @@ function yesterday_no() {
 function feeling() {
     let btn_val = []
     for (let i = 0; i < 9; i++) {
-        let btnCheck = $(`input:checkbox[id="btncheck${i + 1}"]`)
+        let btnCheck = $(`input:checkbox[id="chk${i + 1}"]`)
         if (btnCheck.is(":checked") === true) {
             btn_val.push(btnCheck.val())
         }
@@ -214,30 +214,45 @@ function feeling() {
             } else {
                 console.log(response['chosen'])
                 let temp_html = `<div class="question-h">
-        <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
-    </div>
-        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
-    <div class="btn-group-out">
-        <button type="button" class="btn selectbutton btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">이거 먹을게요!</button>
-        <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="address" placeholder="주소">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
-                </div>
-            </div>
-        </div>
-    </div>`
-                let btnGroup = $('#btn-group')
+                                    <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
+                                </div>
+                                    <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
+                                <div class="button-group-out">
+                                    <button class="button next-stage" data-bs-toggle="modal" data-bs-target="modal">이거 먹을게요!</button>
+                                    <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
+                                </div>
+                                <div class="modal" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+<!--                                  <div class="modal-background"></div>-->
+                                  <div class="modal-card">
+                                    <header class="modal-card-head">
+                                      <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
+                                      <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                      <input type="text" class="form-control" id="address" placeholder="주소">
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                      <button class="button" onclick="to_kakao()">추천!</button>
+                                    </footer>
+                                  </div>
+                                </div>`
+                                // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                //     <div class="modal-dialog">
+                                //         <div class="modal-content">
+                                //             <div class="modal-header">
+                                //                 <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
+                                //                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                //             </div>
+                                //             <div class="modal-body">
+                                //                 <input type="text" class="form-control" id="address" placeholder="주소">
+                                //             </div>
+                                //             <div class="modal-footer">
+                                //                 <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
+                                //             </div>
+                                //         </div>
+                                //     </div>
+                                // </div>
+                let btnGroup = $('#button-group')
                 btnGroup.empty()
                 btnGroup.append(temp_html)
             }
@@ -257,42 +272,42 @@ function feeling_no() {
     })
 }
 
-function retry() {
-    $.ajax({
-        type: "POST",
-        url: "/retry",
-        data: {},
-        success: function (response) {
-            let temp_html = `<div class="question-h">
-        <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
-    </div>
-        <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
-    <div class="btn-group-out">
-        <button type="button" class="btn selectbutton btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">이거 먹을게요!</button>
-        <button type="button" class="btn selectbutton btn-primary" onclick="retry()">마음에 안들어요...</button>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="address" placeholder="주소">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
-                </div>
-            </div>
-        </div>
-    </div>`
-            let btnGroup = $('#btn-group')
-            btnGroup.empty()
-            btnGroup.append(temp_html)
-        }
-    })
-}
+// function retry() {
+//     $.ajax({
+//         type: "POST",
+//         url: "/retry",
+//         data: {},
+//         success: function (response) {
+//             let temp_html = `<div class="question-h">
+//                                 <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
+//                             </div>
+//                                 <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
+//                             <div class="button-group-out">
+//                                 <button class="button next-stage modal-button" id="open-modal" data-target="modal-ter" aria-hashpopup="true">이거 먹을게요!</button>
+//                                 <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
+//                             </div>`
+//                             // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//                             //     <div class="modal-dialog">
+//                             //         <div class="modal-content">
+//                             //             <div class="modal-header">
+//                             //                 <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
+//                             //                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//                             //             </div>
+//                             //             <div class="modal-body">
+//                             //                 <input type="text" class="form-control" id="address" placeholder="주소">
+//                             //             </div>
+//                             //             <div class="modal-footer">
+//                             //                 <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
+//                             //             </div>
+//                             //         </div>
+//                             //     </div>
+//                             // </div>
+//             let btnGroup = $('#button-group')
+//             btnGroup.empty()
+//             btnGroup.append(temp_html)
+//         }
+//     })
+// }
 
 function to_kakao() {
     let address = $('#address').val()
@@ -308,5 +323,3 @@ function to_kakao() {
         }
     })
 }
-
-
