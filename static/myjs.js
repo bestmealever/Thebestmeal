@@ -218,40 +218,29 @@ function feeling() {
                                 </div>
                                     <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
                                 <div class="button-group-out">
-                                    <button class="button next-stage" data-bs-toggle="modal" data-bs-target="modal">이거 먹을게요!</button>
+                                    <button class="button next-stage" onclick='$("#modal-post").addClass("is-active")'>이거 먹을게요!</button>
                                     <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
                                 </div>
-                                <div class="modal" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-<!--                                  <div class="modal-background"></div>-->
-                                  <div class="modal-card">
-                                    <header class="modal-card-head">
-                                      <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
-                                      <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                      <input type="text" class="form-control" id="address" placeholder="주소">
-                                    </section>
-                                    <footer class="modal-card-foot">
-                                      <button class="button" onclick="to_kakao()">추천!</button>
-                                    </footer>
-                                  </div>
+                                <!--이거 먹을게요 모닲-->
+                                <div class="modal" id="modal-post">
+                                    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+                                    <div class="modal-content">
+                                        <div class="box">
+                                            <div class="modal-card">
+                                                <header class="modal-card-head">
+                                                  <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
+                                                  <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                                </header>
+                                                <section class="modal-card-body">
+                                                  <input type="text" class="form-control" id="address" placeholder="주소">
+                                                </section>
+                                                <footer class="modal-card-foot">
+                                                  <button class="button" onclick="to_kakao()">추천!</button>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>`
-                                // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                //     <div class="modal-dialog">
-                                //         <div class="modal-content">
-                                //             <div class="modal-header">
-                                //                 <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
-                                //                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                //             </div>
-                                //             <div class="modal-body">
-                                //                 <input type="text" class="form-control" id="address" placeholder="주소">
-                                //             </div>
-                                //             <div class="modal-footer">
-                                //                 <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
-                                //             </div>
-                                //         </div>
-                                //     </div>
-                                // </div>
                 let btnGroup = $('#button-group')
                 btnGroup.empty()
                 btnGroup.append(temp_html)
@@ -272,42 +261,46 @@ function feeling_no() {
     })
 }
 
-// function retry() {
-//     $.ajax({
-//         type: "POST",
-//         url: "/retry",
-//         data: {},
-//         success: function (response) {
-//             let temp_html = `<div class="question-h">
-//                                 <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
-//                             </div>
-//                                 <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
-//                             <div class="button-group-out">
-//                                 <button class="button next-stage modal-button" id="open-modal" data-target="modal-ter" aria-hashpopup="true">이거 먹을게요!</button>
-//                                 <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
-//                             </div>`
-//                             // <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//                             //     <div class="modal-dialog">
-//                             //         <div class="modal-content">
-//                             //             <div class="modal-header">
-//                             //                 <h5 class="modal-title" id="exampleModalLabel">식당을 추천받기 위해 주소를 입력해 주세요.</h5>
-//                             //                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//                             //             </div>
-//                             //             <div class="modal-body">
-//                             //                 <input type="text" class="form-control" id="address" placeholder="주소">
-//                             //             </div>
-//                             //             <div class="modal-footer">
-//                             //                 <button type="button" class="btn btn-primary" onclick="to_kakao()">추천!</button>
-//                             //             </div>
-//                             //         </div>
-//                             //     </div>
-//                             // </div>
-//             let btnGroup = $('#button-group')
-//             btnGroup.empty()
-//             btnGroup.append(temp_html)
-//         }
-//     })
-// }
+function retry() {
+    $.ajax({
+        type: "POST",
+        url: "/retry",
+        data: {},
+        success: function (response) {
+            let temp_html = `<div class="question-h">
+                                <p class="todays">${response['msg1']} <span id="recommend">${response['chosen']['name']}</span> ${response['msg2']}</p>
+                            </div>
+                                <div class="mealimg" style="background-image: url('${response['chosen']['url']}" alt="${response['chosen']['name']}"></div>
+                            <div class="button-group-out">
+                                <button class="button next-stage" onclick='$("#modal-post").addClass("is-active")'>이거 먹을게요!</button>
+                                <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
+                            </div>
+                            <!--이거 먹을게요 모닲-->
+                                <div class="modal" id="modal-post">
+                                    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+                                    <div class="modal-content">
+                                        <div class="box">
+                                            <div class="modal-card">
+                                                <header class="modal-card-head">
+                                                  <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
+                                                  <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                                </header>
+                                                <section class="modal-card-body">
+                                                  <input type="text" class="form-control" id="address" placeholder="주소">
+                                                </section>
+                                                <footer class="modal-card-foot">
+                                                  <button class="button" onclick="to_kakao()">추천!</button>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
+            let btnGroup = $('#button-group')
+            btnGroup.empty()
+            btnGroup.append(temp_html)
+        }
+    })
+}
 
 function to_kakao() {
     let address = $('#address').val()

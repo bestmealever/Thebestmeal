@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="696d4c08-25b1-4481-a0a4-7c2effcb077d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/mycss.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/mycss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/myjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/myjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kakao.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kakao.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +20,17 @@
       <list>
         <option value="HTML File" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -135,6 +149,7 @@
       <workItem from="1633572916580" duration="2368000" />
       <workItem from="1633585145494" duration="178000" />
       <workItem from="1633924028536" duration="1324000" />
+      <workItem from="1633956470398" duration="566000" />
     </task>
     <servers />
   </component>
@@ -142,7 +157,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Thebestmeal$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1633924650170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Thebestmeal$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1633956913878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Thebestmeal$Flask__login_py_.coverage" NAME="Flask (login.py) Coverage Results" MODIFIED="1633592992746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Thebestmeal$data.coverage" NAME="data Coverage Results" MODIFIED="1633571175471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

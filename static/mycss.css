@@ -167,7 +167,7 @@
 
 /*다음 버튼 틀 위치 설정*/
 .button-group-out {
-    margin: auto;
+    margin: 0 auto 10px auto;
     display: block;
     text-align: center;
 }
@@ -210,6 +210,7 @@
 /*카카오 지도 크기 및 위치 설정*/
 .map_wrap {
     width: 800px;
+    height: 500px;
     margin: auto;
     padding: 20px 70px 50px 70px;
 }
