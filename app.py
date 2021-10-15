@@ -17,11 +17,11 @@ app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 SECRET_KEY = 'bestmealever'
 
 # DB 서버
-# client = MongoClient('mongodb://test:test@15.164.212.139:27017')
+client = MongoClient('mongodb://test:test@15.164.212.139:27017')
 
 # 로컬서버
-client = MongoClient('localhost', 27017)
-db = client.team_project
+# client = MongoClient('localhost', 27017)
+db = client.bestmealever
 
 
 class WhatYouWantForMeal:
@@ -57,7 +57,7 @@ class WhatYouWantForMeal:
         for i in self.want:
             for j in self.feel:
                 self.chosen.append(
-                    db.bestmealever.find_one({'category': i, 'emotion': j}, {'_id': False, 'name': True, 'url': True}))
+                    db.food_info.find_one({'category': i, 'emotion': j}, {'_id': False, 'name': True, 'url': True}))
 
         if self.chosen == [None]:
             self.chosen = [{'name': '추천 할게 없어요 ㅠㅠ',
@@ -99,7 +99,7 @@ def sign_in():
     password_receive = request.form['password_give']
 
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-    result = db.user_info.find_one({'id': username_receive, 'pw': password_hash})
+    result = db.user_info.find_one({'id': username_receive, 'pw': pw_hash})
 
     if result is not None:
         payload = {
