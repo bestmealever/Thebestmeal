@@ -5,7 +5,6 @@ import random
 import os
 
 app = Flask(__name__)
-
 # 배포서버
 client = MongoClient(os.environ.get("MONGO_DB_PATH"))
 
