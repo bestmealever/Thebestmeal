@@ -6,14 +6,13 @@ import os
 
 app = Flask(__name__)
 
-# 배포서버
-client = MongoClient(os.environ.get("MONGO_DB_PATH"))
+# DB 서버
+client = MongoClient('mongodb://test:test@15.164.212.139:27017')
 
 # 로컬서버
 # client = MongoClient('localhost', 27017)
 
-db = client.team_project
-
+db = client.bestmealever
 
 class WhatYouWantForMeal:
     def __init__(self):
