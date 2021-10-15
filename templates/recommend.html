@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Webpage Title -->
+    <title>오늘 뭐 먹지? | Main</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--파비콘-->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon2.ico" />
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!--<link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">-->
+    <link href="../static/mycss.css" rel="stylesheet">
+
+    <!--JS 파일-->
+    <script src="../static/myjs.js" rel="script"></script>
+    <!--<script src="{{ url_for('static', filename='myjs.js') }}"></script>-->
+
+    <script>
+        $('.category').click(function() {
+            $(this).addClass('is-danger');
+        });
+    </script>
+</head>
+
+
+<body>
+<!--타이틀부분-->
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    오늘 뭐 먹지?
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button log-in is-primary">
+                                <strong>로그인</strong>
+                            </a>
+                            <a class="button is-light">
+                                아무 버튼
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="sub-hero">
+            <div class="hero-body has-text-centered">
+                <p class="main-title">
+                    오늘 뭐 먹지?
+                </p>
+                <p class="sub-title">
+                    간단한 질문에 답하고, 오늘의 식사를 추천 받아 보세요!
+                </p>
+            </div>
+        </section>
+    </header>
+
+<!--본문-->
+    <main id="wrap">
+        <div class="button-group" id="button-group">
+            <div class="question-h">
+                <p class="question-style"> Q.1 어떤 종류의 음식이 땡기시나요? </p>
+            </div>
+            <div class="button-group-in">
+                <input type="checkbox" id="chk1" class="select-category" value="korean">
+                <label class="category" for="chk1">한식</label>
+
+                <input type="checkbox" id="chk2" class="select-category" value="chinese">
+                <label class="category" for="chk2">중식</label>
+
+                <input type="checkbox" id="chk3" class="select-category" value="japanese">
+                <label class="category" for="chk3">일식</label>
+            </div>
+            <div class="button-group-in">
+                <input type="checkbox" id="chk4" class="select-category" value="western">
+                <label class="category" for="chk4">양식</label>
+
+                <input type="checkbox" id="chk5" class="select-category" value="snack">
+                <label class="category" for="chk5">분식</label>
+
+                <input type="checkbox" id="chk6" class="select-category" value="bread">
+                <label class="category" for="chk6">빵</label>
+            </div>
+            <div class="button-group-in">
+                <input type="checkbox" id="chk7" class="select-category" value="supper">
+                <label class="category" for="chk7">야식</label>
+
+                <input type="checkbox" id="chk8" class="select-category" value="fastfood">
+                <label class="category" for="chk8">패스트푸드</label>
+
+                <input type="checkbox" id="chk9" class="select-category" value="salad">
+                <label class="category" for="chk9">샐러드</label>
+            </div>
+            <div class="button-group-out">
+                <button class="button next-stage" onclick="want()">다음</button>
+                <button class="button next-stage" onclick="want_no()">땡기는게 없어요</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>오늘 뭐 먹지?</strong> made by
+                <a href="https://github.com/bestmealever/Thebestmeal">이거사조</a>. <br>
+                이거사조 is Team 4 in 내일배움캠프. <br>
+                Welcome to <a href="https://spartacodingclub.kr/">스파르타코딩클럽</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

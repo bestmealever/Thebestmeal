@@ -82,9 +82,9 @@ def home():
     print('객체 새로 만듬')
     return render_template('index.html')
 
-@app.route('/main')
-def main():
-    return render_template('home.html')
+@app.route('/recommend')
+def recommend():
+    return render_template('recommend.html')
 
 @app.route('/kakao')
 def kakao():
