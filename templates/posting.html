@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Webpage Title -->
+    <title>오늘 뭐 먹지? | Main</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--파비콘-->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon2.ico"/>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!--<link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">-->
+    <link href="../static/mycss.css" rel="stylesheet">
+
+    <!--JS 파일-->
+    <script src="../static/myjs.js" rel="script"></script>
+    <script src="../static/recojs.js" rel="script"></script>
+
+    <script>
+        $('.category').click(function () {
+            $(this).addClass('is-danger');
+        });
+
+    </script>
+</head>
+
+
+<body>
+<!--타이틀부분-->
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                오늘 뭐 먹지?
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button log-in is-primary">
+                            <strong>로그인</strong>
+                        </a>
+                        <a class="button is-light">
+                            아무 버튼
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--본문-->
+<main id="wrap">
+    <p>음식 추천하기</p>
+    <div class="button-group" id="button-group">
+        내가 추천할 음식은
+        <form id="foodname">
+            <input type="text" id="foodname1"></form>
+        입니다
+        <button class="button next-stage" onclick="step1()" id="step1">다음</button>
+        <button class="button next-stage" href="window.location.href ='index.html'">추천 그만두기</button>
+    </div>
+    </div>
+</main>
+{#모달1#}
+<div class="modal" id="modal-post">
+<div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+<div class="modal-content" style="width: 400px; text-align: center;">
+<div class="box"><p class="modaltext" style="padding: 10px 0 20px 0;">음식 이름을 입력해주세요</p>
+<div class="level-item">
+    <a class="button is-sparta is-outlined" onclick='$("#modal-post").removeClass("is-active")'>확인</a>
+    </div>
+</div>
+</div>
+</div>
+{#모달2#}
+<div class="modal" id="modal-post2">
+<div class="modal-background" onclick='$("#modal-post2").removeClass("is-active")'></div>
+<div class="modal-content">
+<div class="box">이미 등록되어 있는 음식입니다!
+<div class="level-item">
+    <a class="button is-sparta is-outlined" onclick='$("#modal-post2").removeClass("is-active")'>확인</a>
+    </div>
+</div>
+</div>
+</div>
+{#모달3#}
+<div class="modal" id="modal-post3">
+<div class="modal-background" onclick='$("#modal-post3").removeClass("is-active")'></div>
+<div class="modal-content">
+<div class="box">1개 이상 선택해주세요!
+<div class="level-item">
+    <a class="button is-sparta is-outlined" onclick='$("#modal-post3").removeClass("is-active")'>확인</a>
+    </div>
+</div>
+</div>
+</div>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>오늘 뭐 먹지?</strong> made by
+            <a href="https://github.com/bestmealever/Thebestmeal">이거사조</a>. <br>
+            이거사조 is Team 4 in 내일배움캠프. <br>
+            Welcome to <a href="https://spartacodingclub.kr/">스파르타코딩클럽</a>.
+        </p>
+    </div>
+</footer>
+</body>
+</html>
