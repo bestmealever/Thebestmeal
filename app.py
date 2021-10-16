@@ -63,12 +63,12 @@ def step3():
 def file_upload():
     file = request.files['file']
     s3 = boto3.client('s3',
-                      aws_access_key_id="AKIAZBAKZL3E5QUOL3GH",
-                      aws_secret_access_key="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"
+                      aws_access_key_id="---",
+                      aws_secret_access_key="---"
                       )
     s3.put_object(
         ACL="public-read",
-        Bucket="jproject3",
+        Bucket="---",
         Body=file,
         Key=file.filename,
         ContentType=file.content_type)
