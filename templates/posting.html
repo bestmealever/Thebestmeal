@@ -51,7 +51,6 @@
             alert('로그아웃!')
             window.location.href = "/"
         }
-
     </script>
 </head>
 
@@ -61,7 +60,7 @@
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="/">
                 오늘 뭐 먹지?
             </a>
         </div>
@@ -90,9 +89,10 @@
 
         <p class="posting_q1">추천할 <b>음식 이름</b>은</p>
         <div style="padding: 0 25% 0 25%">
-            <form id="foodname">
-                <input class="input is-rounded posting_q1_input" type="text" id="foodname1" placeholder="(예시)삼겹살">
-            </form>
+
+            <input class="input is-rounded posting_q1_input" type="text" placeholder="(예시)삼겹살" id="foodname"
+                   onkeyup="if(window.event.keyCode==13){step1()}">
+
         </div>
         <p class="posting_q1">입니다</p>
         <div class="button-group-out">

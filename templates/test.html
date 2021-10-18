@@ -20,11 +20,21 @@
 </head>
 <body>
 
+<script>
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            alert('wow')
+            $("#test").trigger('click')
+        }
+    }
+</script>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test">
     이거 먹을게요!
 </button>
+
+<input type="text" onkeyup="enterkey()">
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

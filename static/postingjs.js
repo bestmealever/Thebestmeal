@@ -1,22 +1,20 @@
 function step1() {
-    let foodname = $("#foodname1").val();
+    let foodname = $("#foodname").val();
     console.log(foodname);
-    $("#foodname").find("input[type=text]").each(function () {
-        // 빈칸일 경우 경고
-        if ($(this).val().trim() == '') {
-            $("#modal-post").addClass("is-active");
-        } else (
-            $.ajax({
-                type: "POST",
-                url: "/step1",
-                data: {foodname_give: foodname},
-                success: function (response) {
-                    // 이미 등록된 음식일 경우 경고
-                    if (response['result'] === 'fail') {
-                        $("#modal-post2").addClass("is-active");
-                        console.log(response['msg'])
-                    } else {
-                        let temp_html = `<p class="question-style" style="margin-bottom: 10px;"> Q.2 어떤 종류의 음식인가요? </p>
+    if ($("#foodname").val() == '') {
+        $("#modal-post").addClass("is-active");
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/step1",
+            data: {foodname_give: foodname},
+            success: function (response) {
+                // 이미 등록된 음식일 경우 경고
+                if (response['result'] === 'fail') {
+                    $("#modal-post2").addClass("is-active");
+                    console.log(response['msg'])
+                } else {
+                    let temp_html = `<p class="question-style" style="margin-bottom: 10px;"> Q.2 어떤 종류의 음식인가요? </p>
                                          <progress class="progress is-normal" value="25" max="100">25%</progress>
                                          <div class="button-group-in">
                                                 <input type="checkbox" id="chk1" class="select-category" value="korean">
@@ -46,13 +44,13 @@ function step1() {
                                           <div class="button-group-out">
                                              <button class="button next-stage" onclick="step2()">다음</button>
                                           </div>`
-                        let btnGroup = $('#button-group')
-                        btnGroup.empty()
-                        btnGroup.append(temp_html)
-                    }
+                    let btnGroup = $('#button-group')
+                    btnGroup.empty()
+                    btnGroup.append(temp_html)
                 }
-            }))
-    })
+            }
+        })
+    }
 }
 
 function step2() {
@@ -153,6 +151,7 @@ function step3() {
         }
     })
 }
+
 <!--이미지 미리보기 이벤트-->
 function setThumbnail(event) {
     var reader = new FileReader();
