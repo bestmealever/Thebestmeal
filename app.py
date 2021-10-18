@@ -72,15 +72,22 @@ class WhatYouWantForMeal:
 
 what_you_want = WhatYouWantForMeal()
 
-
-# HTML을 주는 부분
 @app.route('/')
 def home():
-    token_receive = request.cookies.get('mytoken')
     global what_you_want
-    what_you_want = WhatYouWantForMeal()
-    print('객체 새로 만듬')
-    return render_template('index.html')
+    token_receive = request.cookies.get('mytoken')
+
+    if token_receive == None:
+        what_you_want = WhatYouWantForMeal()
+        return render_template('index.html')
+
+    else:
+        print(token_receive)
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.user_info.find_one({"id": payload["id"]})
+        what_you_want = WhatYouWantForMeal()
+        return render_template('index-logged-in.html', user_info=user_info)
+
 
 @app.route('/recommend')
 def recommend():
@@ -100,6 +107,7 @@ def sign_in():
 
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     result = db.user_info.find_one({'id': username_receive, 'pw': pw_hash})
+    print(result)
 
     if result is not None:
         payload = {
@@ -108,7 +116,7 @@ def sign_in():
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
-        return jsonify({'result': 'success', 'token': token})
+        return jsonify({'result': 'success', 'token': token, 'id': result['id']})
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})

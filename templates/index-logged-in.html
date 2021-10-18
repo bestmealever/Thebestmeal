@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Webpage Title -->
-    <title>오늘 뭐 먹지? | Main</title>
+    <title> 오늘 뭐 먹지? | {{ user_info.id }}님! 안녕하세요! </title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,149 +28,11 @@
 
 
     <script>
-        function sign_in() {
-            let username = $("#input-username").val()
-            let password = $("#input-password").val()
-
-            if (username == "") {
-                $("#help-id-login").text("아이디를 입력하세요.")
-                $("#input-username").focus()
-                return;
-            } else {
-                $("#help-id-login").text("")
-            }
-
-            if (password == "") {
-                $("#help-password-login").text("비밀번호를 입력하세요.")
-                $("#input-password").focus()
-                return;
-            } else {
-                $("#help-password-login").text("")
-            }
-            $.ajax({
-                type: "POST",
-                url: "/sign_in",
-                data: {
-                    username_give: username,
-                    password_give: password
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        $.cookie('mytoken', response['token'], {path: '/'});
-                        window.location.replace("/")
-                    } else {
-                        alert(response['msg'])
-                    }
-                }
-            });
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/"
         }
-
-        function sign_up() {
-            let username = $("#input-username").val()
-            let password = $("#input-password").val()
-            let password2 = $("#input-password2").val()
-            console.log(username, password, password2)
-
-
-            if ($("#help-id").hasClass("is-danger")) {
-                alert("아이디를 다시 확인해주세요.")
-                return;
-            } else if (!$("#help-id").hasClass("is-success")) {
-                alert("아이디 중복확인을 해주세요.")
-                return;
-            }
-
-            if (password == "") {
-                $("#help-password").text("비밀번호를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
-                $("#input-password").focus()
-                return;
-            } else if (!is_password(password)) {
-                $("#help-password").text("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자").removeClass("is-safe").addClass("is-danger")
-                $("#input-password").focus()
-                return
-            } else {
-                $("#help-password").text("사용할 수 있는 비밀번호입니다.").removeClass("is-danger").addClass("is-success")
-            }
-            if (password2 == "") {
-                $("#help-password2").text("비밀번호를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
-                $("#input-password2").focus()
-                return;
-            } else if (password2 != password) {
-                $("#help-password2").text("비밀번호가 일치하지 않습니다.").removeClass("is-safe").addClass("is-danger")
-                $("#input-password2").focus()
-                return;
-            } else {
-                $("#help-password2").text("비밀번호가 일치합니다.").removeClass("is-danger").addClass("is-success")
-            }
-            $.ajax({
-                type: "POST",
-                url: "/sign_up/save",
-                data: {
-                    username_give: username,
-                    password_give: password
-                },
-                success: function (response) {
-                    alert("회원가입을 축하드립니다!")
-                    // window.location.replace("/로그인 성공시 가고싶은 페이지")
-                    window.location.href = "/"
-                }
-            });
-
-        }
-
-        function toggle_sign_up() {
-            $("#sign-up-box").toggleClass("is-hidden")
-            $("#div-sign-in-or-up").toggleClass("is-hidden")
-            $("#btn-check-dup").toggleClass("is-hidden")
-            $("#help-id").toggleClass("is-hidden")
-            $("#help-password").toggleClass("is-hidden")
-            $("#help-password2").toggleClass("is-hidden")
-        }
-
-        function is_nickname(asValue) {
-            var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
-            return regExp.test(asValue);
-        }
-
-        function is_password(asValue) {
-            var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
-            return regExp.test(asValue);
-        }
-
-        function check_dup() {
-            let username = $("#input-username").val()
-            console.log(username)
-            if (username == "") {
-                $("#help-id").text("아이디를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
-                $("#input-username").focus()
-                return;
-            }
-            if (!is_nickname(username)) {
-                $("#help-id").text("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-10자 길이").removeClass("is-safe").addClass("is-danger")
-                $("#input-username").focus()
-                return;
-            }
-            $("#help-id").addClass("is-loading")
-            $.ajax({
-                type: "POST",
-                url: "/sign_up/check_dup",
-                data: {
-                    username_give: username
-                },
-                success: function (response) {
-
-                    if (response["exists"]) {
-                        $("#help-id").text("이미 존재하는 아이디입니다.").removeClass("is-safe").addClass("is-danger")
-                        $("#input-username").focus()
-                    } else {
-                        $("#help-id").text("사용할 수 있는 아이디입니다.").removeClass("is-danger").addClass("is-success")
-                    }
-                    $("#help-id").removeClass("is-loading")
-
-                }
-            });
-        }
-
     </script>
 
 
@@ -187,8 +49,11 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button log-in is-primary" id="login" onclick='$("#modal-post").addClass("is-active")'>
-                            <strong>로그인</strong>
+                        <a class="button log-in is-primary" id="logout" onclick="sign_out()">
+                            <strong>로그아웃</strong>
+                        </a>
+                        <a class="button is-light" id="mypage">
+                            마이페이지
                         </a>
                     </div>
                 </div>
@@ -281,10 +146,10 @@
                 오늘 뭐 먹지?
             </p>
             <p class="sub-title">
-                간단한 질문에 답하고, 오늘의 식사를 추천 받아 보세요!
+                {{ user_info.id }}님! 오늘은 어떤 음식을 먹어볼까요?!
             </p>
             <div class="button-box">
-                <button class="main-button" onclick="alert('로그인 후 이용해주세요!')">추천하기</button>
+                <button class="main-button">추천하기</button>
                 <button class="main-button" onclick="window.location.href='/recommend';">추천받기</button>
             </div>
         </div>
