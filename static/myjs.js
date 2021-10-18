@@ -13,7 +13,8 @@ function want() {
         data: {want_give: btn_val},
         success: function (response) {
             if (response['result'] === 'fail') {
-                alert(response['msg'])
+                $("#modal-post").addClass("is-active");
+                console.log('want');
             } else {
                 let temp_html = `<div class="question-h">
                                     <p class="question-style"> Q.2 오늘 기분은 어때요? </p>
@@ -57,7 +58,8 @@ function want_no() {
         url: "/want_no",
         data: {},
         success: function (response) {
-            alert(response['msg'])
+            $("#modal-post2").addClass("is-active");
+            console.log('want_no');
             let temp_html = `        <div class="question-h">
                                         <p class="question-style"> Q.2 그럼 어제는 뭐 먹었어요? </p>
                                     </div>
@@ -118,7 +120,8 @@ function yesterday() {
         data: {yesterday_give: btn_val},
         success: function (response) {
             if (response['result'] === 'fail') {
-                alert(response['msg'])
+                $("#modal-post").addClass("is-active");
+                console.log('yesterday');
             } else {
                 let temp_html = `<div class="question-h">
                                     <p class="question-style"> Q.3 오늘 기분은 어때요? </p>
@@ -161,7 +164,8 @@ function yesterday_no() {
         url: "/yesterday_no",
         data: {},
         success: function (response) {
-            alert(response['msg'])
+            $("#modal-post3").addClass("is-active");
+            console.log('yesterday_no');
             let temp_html = `<div class="question-h">
                                 <p class="question-style"> Q.3 오늘 기분은 어때요? </p>
                             </div>
@@ -210,7 +214,8 @@ function feeling() {
         data: {feeling_give: btn_val},
         success: function (response) {
             if (response['result'] === 'fail') {
-                alert(response['msg'])
+                $("#modal-post").addClass("is-active");
+                console.log('feeling');
             } else {
                 console.log(response['chosen'])
                 let temp_html = `<div class="question-h">
@@ -256,7 +261,8 @@ function feeling_no() {
         url: "/feeling_no",
         data: {},
         success: function (response) {
-            alert(response['msg'])
+            $("#modal-post4").addClass("is-active");
+            console.log('feeling');
         }
     })
 }
