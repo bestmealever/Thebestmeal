@@ -7,6 +7,7 @@ from flask import Flask, render_template, jsonify, request, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 from flask_cors import CORS
+import boto3
 import random
 import os
 
@@ -16,13 +17,12 @@ app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 
 SECRET_KEY = 'bestmealever'
 
-# DB 서버
-client = MongoClient('mongodb://test:test@15.164.212.139:27017')
+# 배포서버
+# client = MongoClient('mongodb://test:test@15.164.212.139:27017')
 
 # 로컬서버
-# client = MongoClient('localhost', 27017)
+client = MongoClient("mongodb://localhost:27017/")
 db = client.bestmealever
-
 
 class WhatYouWantForMeal:
     def __init__(self):
@@ -247,6 +247,85 @@ def get_keyword():
     search = f'{what_you_want.address} {what_you_want.recommend}'
     print(search)
     return {'search': search}
+
+@app.route('/posting')
+def posting():
+    return render_template('posting.html')
+
+@app.route('/step1', methods=['POST'])
+def step1():
+    foodname_receive = request.form['foodname_give']
+    exists = bool(db.food_info.find_one({'name': foodname_receive}))
+    if exists == False :
+        global posting_food
+        posting_food = foodname_receive
+        print('없으니 등록')
+        return jsonify({'result': 'success'})
+    else:
+        print('있으니 거절')
+        return jsonify({'result': 'fail', 'msg': '이미 있는 음식이예요!'})
+
+@app.route('/step2', methods=['POST'])
+def step2():
+    cat_give_receive = request.form.getlist('food_cat_give[]')
+    exists = bool(cat_give_receive)
+    if exists == False :
+        print('값을 선택해라')
+        return jsonify({'result': 'fail', 'msg': '1개 이상 선택해주세요!'})
+    else:
+        print('성공')
+        global posting_category
+        posting_category = cat_give_receive
+        return {"result": "success"}
+
+@app.route('/step3', methods=['POST'])
+def step3():
+    feel_give_receive = request.form.getlist('food_feel_give[]')
+    exists = bool(feel_give_receive)
+    if exists == False:
+        print('값을 선택해라')
+        return jsonify({'result': 'fail', 'msg': '1개 이상 선택해주세요!'})
+    else:
+        global posting_emotion
+        posting_emotion = feel_give_receive
+        return {"result": "success"}
+
+@app.route('/fileupload', methods=['POST'])
+def file_upload():
+    # token_receive = request.cookies.get('mytoken')
+    # try:
+    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    #     user_id = db.user_info.fine_one({'id': payload['id']})
+    file = request.files['file']
+    comment = request.form['comment_give']
+    s3 = boto3.client('s3',
+                      aws_access_key_id="---",
+                      aws_secret_access_key="---"
+                      )
+    s3.put_object(
+        ACL="public-read",
+        Bucket="---",
+        Body=file,
+        Key=file.filename,
+        ContentType=file.content_type)
+    global posting_url
+    posting_url = 'https://버킷네임.s3.ap-northeast-2.amazonaws.com/'+file.filename
+    doc = {'name': posting_food,
+           'category': posting_category,
+           'emotion': posting_emotion,
+           'url': posting_url}
+    db.food_info.insert_one(doc)
+    print(doc)
+    doc2 = {'name': posting_food,
+           'category': posting_category,
+           'emotion': posting_emotion,
+           'url': posting_url,
+           # 'user_id' : user_id,
+           'comment' : comment}
+    db.posting.insert_one(doc2)
+    print(doc2)
+    doc2 = db.posting.find_one({'name': posting_food}, {'_id': False})
+    return jsonify({'doc2':doc2})
 
 
 if __name__ == '__main__':
