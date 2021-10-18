@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <!-- Webpage Title -->
-    <title>오늘 뭐 먹지? | Main</title>
+    <title>오늘 뭐 먹지? | {{ user_info.id }} </title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -36,15 +36,21 @@
     <script src="../static/postingjs.js" rel="script"></script>
     <style>
         img {
-        width:100%;
-        height:100%;
-        object-fit:cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
     <script>
         $('.category').click(function () {
             $(this).addClass('is-danger');
         });
+
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/"
+        }
 
     </script>
 </head>
@@ -63,11 +69,11 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button log-in is-primary">
-                            <strong>로그인</strong>
+                        <a class="button log-in is-primary" id="logout" onclick="sign_out()">
+                            <strong>로그아웃</strong>
                         </a>
-                        <a class="button is-light">
-                            아무 버튼
+                        <a class="button is-light" id="mypage">
+                            마이 페이지
                         </a>
                     </div>
                 </div>

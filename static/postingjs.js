@@ -1,4 +1,3 @@
-
 function step1() {
     let foodname = $("#foodname1").val();
     console.log(foodname);
@@ -189,7 +188,7 @@ function save() {
             console.log(foodurl, name, comment)
             let temp_html = `<p class="question-style" style="margin-bottom: 10px;">END. 음식 추천 완료! </p>
                             <progress class="progress is-normal" value="100" max="100">100%</progress>
-                            <div id="posting_result_img" style="background-image:url('${foodurl}')"></div>
+                            <div id="posting_result_img" style="background-image:url(${foodurl})"></div>
                             <div class="posting_result">
                                 <p class="posting_title">당신의 추천 음식</p>
                                 <p class="posting_foodname">${name}</p>
