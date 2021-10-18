@@ -150,7 +150,7 @@
     height: 100px;
     margin: 0 10px 0 10px;
 
-    background-color: gainsboro;
+    background-color: #EDEDED;
     border-radius: 30px;
     text-align: center;
     font-size: 20px;
@@ -395,4 +395,96 @@
     font-weight: bold;
     cursor: default;
     color: #777;
+}
+
+/*posting 부분 css*/
+/*posting.html*/
+/*q1 텍스트*/
+.posting_q1 {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size:15pt;
+    padding: 10px 0 10px 0;
+    text-align: center;
+}
+/*q1 텍스트 - 음식이름 input*/
+.posting_q1_input {
+    width: 400px;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size:18pt;
+}
+/*alert 경고창 모달*/
+.modal-content {
+    width: 400px;
+    text-align: center;
+}
+.modaltext-point {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 30pt;
+}
+.modaltext {
+    padding: 10px 0 30px 0;
+    font-size: 14pt;
+}
+
+/*파일 업로드 */
+.form-group {
+    margin:auto;
+    text-align: center;
+}
+/*이미지 미리보기*/
+#image_container {
+    width: 200px;
+    height: 200px;
+    overflow:hidden;
+    border-radius: 20px;
+    background-image: url('https://jproject3.s3.ap-northeast-2.amazonaws.com/imgpreview.jpg');
+    background-position: center;
+    background-size: 250px;
+    float: left;
+    margin: 10px 10px 0 0;
+    text-align: center;
+    line-height: 150pt
+}
+
+#posting_result_img {
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    float: left;
+    margin: 10px 20px 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.posting_result {
+    width:330px;
+    height: 200px;
+    float: left;
+    margin: 10px 0 0 0;
+}
+
+/*포스팅 결과 텍스트*/
+.posting_title {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size:13pt;
+    padding: 10px 0 0px 0;
+}
+.posting_foodname {
+    font-weight: 700;
+    font-size:24pt;
+    margin-bottom: 8px;"
+}
+.posting_comment {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size:12pt;
+    color:gray;
+    padding: 10px 0 10px 0;
+}
+.posting_tag {
+    margin:0 5px 0 0;
+    background-color: #FED7BF;
 }
