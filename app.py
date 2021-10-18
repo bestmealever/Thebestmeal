@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from flask_cors import CORS
 import random
 import os
+import boto3
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -267,18 +268,23 @@ def saving_update():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         username = payload['id']
         about_receive = request.form['about_give']
-        new_doc = {
-            "profile": about_receive
-        }
         if 'file_give' in request.files:
-            file = request.files['file.give']
-            filename = secure_filename(file.filename)
-            extension = filename.split(".")[-1]
-            file.path = f"profile_pics/{username}.{extension}"
-            file.save("./static/"+file_path)  # S3로 저장해야함!
-            new_doc['profile_pic'] = filename # S3 url을 가져올 것!
-            new_doc['profile_pic_real'] = file_path
-        db.user_info.update_one({'username': payload['id']}, {'$set':new_doc})
+            file = request.files['file_give']
+            s3 = boto3.client('s3',
+                              aws_access_key_id='...',
+                              aws_secret_access_key='...'
+                              )
+            s3.put_object(
+                ACL="public-read",
+                Bucket="...",
+                Body=file,
+                Key=file.filename,
+                ContentType=file.content_type
+            )
+            profile_url = 'https://bestmealever-s3.s3.ap-northeast-2.amazonaws.com/'+file.filename
+            doc = {'about': about_receive,
+                   'profile_pic': profile_url}
+        db.user_info.update_one({'username': username}, {'$set':doc})
         return jsonify({"result": "success", 'msg': '프로필을 업데이트했습니다.'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for('/'))

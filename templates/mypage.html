@@ -54,7 +54,7 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    if (response['result'] == "success") {
+                    if (response['result'] === "success") {
                         alert(response["msg"])
                         window.location.reload()
                     }
@@ -63,7 +63,7 @@
         }
 
         function get_post(username) {
-            if (username == undefined) {
+            if (username === undefined) {
                 username = ""
             }
             $("#post-box").empty()
@@ -72,7 +72,7 @@
                 url: `/get_post?username_give=${username}`,
                 data: {},
                 success: function(response) {
-                    if (response['result'] == success) {
+                    if (response['result'] === success) {
                         let posts = response['posts']
                         for (let i = 0; i < posts.lengh; i++) {
                             let post = posts[i]
