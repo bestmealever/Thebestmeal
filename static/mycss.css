@@ -202,6 +202,28 @@
     margin: 20px auto 30px auto;
 }
 
+/*마이페이지 css 설정*/
+/*유저 정보*/
+.user-info {
+    width: 700px;
+    margin: auto;
+}
+.media-content {
+    padding-left: 30px;
+}
+.edit {
+    margin-top: 75px;
+
+    background-color: #fafafa;
+    border:none;
+}
+
+/*드롭다운*/
+.dropdown {
+    float: right;
+
+    margin-bottom: 30px;
+}
 
 /*---------------------------------------------------*/
 

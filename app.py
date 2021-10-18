@@ -90,6 +90,10 @@ def recommend():
 def kakao():
     return render_template('kakao.html')
 
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
 #회원가입 및 로그인
 
 @app.route('/sign_in', methods=['POST'])
@@ -239,6 +243,64 @@ def get_keyword():
     search = f'{what_you_want.address} {what_you_want.recommend}'
     print(search)
     return {'search': search}
+
+
+##내 프로필 내에서만 수정버튼이 보일 수 있게 만든 api
+@app.route('/mypage/<username>')
+def user(username):
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (username == payload["id"])
+
+        user_info = db.user_info.find_one({"username": username}, {'_id': False})
+        return render_template('mypage.html', user_info=user_info, status=status)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for('index.html'))
+
+
+##회원정보 업데이트 api
+@app.route('/update_profile', methods=['POST'])
+def saving_update():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        username = payload['id']
+        about_receive = request.form['about_give']
+        new_doc = {
+            "profile": about_receive
+        }
+        if 'file_give' in request.files:
+            file = request.files['file.give']
+            filename = secure_filename(file.filename)
+            extension = filename.split(".")[-1]
+            file.path = f"profile_pics/{username}.{extension}"
+            file.save("./static/"+file_path)  # S3로 저장해야함!
+            new_doc['profile_pic'] = filename # S3 url을 가져올 것!
+            new_doc['profile_pic_real'] = file_path
+        db.user_info.update_one({'username': payload['id']}, {'$set':new_doc})
+        return jsonify({"result": "success", 'msg': '프로필을 업데이트했습니다.'})
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for('/'))
+
+## 마이페이지에 내가 포스팅한 게시물만 보여주는 api
+# @app.route('/get_posts', methods=['GET'])
+# def get_posts():
+#     token_receive = request.cookies.get('mytoken')
+#     try:
+#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+#         posts = list(db.user_info.find_one({}).sort("date", -1))
+#         if username_receive == "":
+#             posts = list(db.user_info.find({}).sort('date', -1))
+#         else:
+#             posts = list(db.user_info.find({"username": username_receive}).sort('date', -1))
+#         for post in posts:
+#             post['_id'] = str(post['_id'])
+#             post['count_heart'] = db.liked_food.count_documents({'post_id'})
+#             post['heart_by_me'] = bool(db.liked_food.find_one({'post_id': post['_id'], 'type': 'heart'}))
+#         return jsonify({'result': 'success', 'msg': '포스팅을 가져왔습니다.', 'posts': posts})
+#     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+#         return redirect(url_for('/'))
 
 
 if __name__ == '__main__':
