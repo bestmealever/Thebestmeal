@@ -29,7 +29,7 @@ function get_posts() {
                                         <div class="level-left">
                                             <a class="level-item" aria-label="heart" onclick="toggle_like('${post['name']}')">
                                                 <span class="icon is-small">
-                                                    <i class="fa ${class_heart}" id="${post["name"]} aria-hidden="true"></i>
+                                                    <i class="fa ${class_heart}" id="${post["name"]}" aria-hidden="true"></i>
                                                 </span>&nbsp;
                                                 <span class="like-num">${count_heart}</span>
                                             </a>

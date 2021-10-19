@@ -213,7 +213,7 @@ def feeling():
     else:
         what_you_want.feeling(feeling_give_receive)
         if len(what_you_want.chosen) == 1:
-            return jsonify({'result': 'success', 'msg1': '', 'chosen': what_you_want.chosen[0], 'msg2': ''})
+            return jsonify({'result': 'success', 'msg1': '오늘은', 'chosen': what_you_want.chosen[0], 'msg2': '어때요?!'})
         else:
             num = what_you_want.retry_num
             return jsonify(
@@ -232,7 +232,7 @@ def retry():
     num = what_you_want.retry_num
     if what_you_want.retry_num >= len(what_you_want.choice_num):
         return jsonify({'result': 'success', 'msg1': '', 'chosen': {'name': '더 이상 추천 할게 없어요 ㅠㅠ',
-                                                                    'url': 'https://blog.kakaocdn.net/dn/cCSIPC/btqKdFDO51a/vuyWbKS5CqBtWnDgyl3pv0/img.jpg'},
+                                                                    'url': 'https://bestmealever-s3.s3.ap-northeast-2.amazonaws.com/crypepe.jpeg'},
                         'msg2': ''})
     else:
         return jsonify(
@@ -309,12 +309,12 @@ def file_upload():
     file = request.files['file']
     comment = request.form['comment_give']
     s3 = boto3.client('s3',
-                      aws_access_key_id='...',
-                      aws_secret_access_key='...'
+                      aws_access_key_id='AKIAZSHMN4DACZOI3BHA',
+                      aws_secret_access_key='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'
                       )
     s3.put_object(
         ACL="public-read",
-        Bucket='...',
+        Bucket='bestmealever-s3',
         Body=file,
         Key=file.filename,
         ContentType=file.content_type)

@@ -36,6 +36,10 @@
             console.log('시작은 됨')
         })
 
+        function alert() {
+            $("#modal-post5").addClass("is-active");
+        }
+
         function sign_in() {
             let username = $("#input-username").val()
             let password = $("#input-password").val()
@@ -287,11 +291,11 @@
             <p class="main-title">
                 오늘 뭐 먹지?
             </p>
-            <p class="sub-title">
+            <p class="sub-title" style="font-size:20px;">
                 간단한 질문에 답하고, 오늘의 식사를 추천 받아 보세요!
             </p>
             <div class="button-box">
-                <button class="main-button" onclick="alert('로그인 후 이용해주세요!')">추천하기</button>
+                <button class="main-button" onclick="alert()">추천하기</button>
                 <button class="main-button" onclick="window.location.href='/recommend';">추천받기</button>
             </div>
         </div>
@@ -300,131 +304,25 @@
 
 <main>
     <div class="main-info">
-        <p>오늘 가장 많이 선택한 음식들입니다!</p>
+        <p></p>
     </div>
     <div class="cards-4" id="cards">
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">장민</p>
-                        <p class="subtitle is-6">@jangmin123</p>
-                    </div>
-                </div>
-                <div class="content">
-                    오늘 저녁은 이것이 어떤지 모르것는디?
-                    <br>
-                    <div class="like">
-                            <span class="icon is-small">
-                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
-                                <span class="like-num">12</span>
-                            </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">장민</p>
-                        <p class="subtitle is-6">@jangmin123</p>
-                    </div>
-                </div>
-                <div class="content">
-                    오늘 저녁은 이것이 어떤지 모르것는디?
-                    <br>
-                    <div class="like">
-                            <span class="icon is-small">
-                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
-                                <span class="like-num">12</span>
-                            </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">장민</p>
-                        <p class="subtitle is-6">@jangmin123</p>
-                    </div>
-                </div>
-                <div class="content">
-                    오늘 저녁은 이것이 어떤지 모르것는디?
-                    <br>
-                    <div class="like">
-                            <span class="icon is-small">
-                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
-                                <span class="like-num">12</span>
-                            </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">장민</p>
-                        <p class="subtitle is-6">@jangmin123</p>
-                    </div>
-                </div>
-                <div class="content">
-                    오늘 저녁은 이것이 어떤지 모르것는디?
-                    <br>
-                    <div class="like">
-                            <span class="icon is-small">
-                                <i class="fa fa-heart" aria-hidden="true" style="color:orangered;">♥</i>
-                                <span class="like-num">12</span>
-                            </span>
-                    </div>
-                </div>
+
+    </div>
+</main>
+<!--모달 로그인 후 이용해주세요-->
+<div class="modal" id="modal-post5">
+    <div class="modal-background" onclick='$("#modal-post5").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="modaltext-point">앗!</p>
+            <p class="modaltext">로그인 후 이용해주세요!</p>
+            <div class="level-item">
+                <a class="button is-sparta is-outlined" onclick='$("#modal-post5").removeClass("is-active")'>확인</a>
             </div>
         </div>
     </div>
-</main>
+</div>
 
 <footer class="footer">
     <div class="content has-text-centered">

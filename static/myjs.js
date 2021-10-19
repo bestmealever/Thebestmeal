@@ -282,23 +282,19 @@ function retry() {
                                 <button class="button next-stage" onclick="retry()">마음에 안들어요...</button>
                             </div>
                             <!--이거 먹을게요 모닲-->
-                                <div class="modal" id="modal-post">
-                                    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
-                                    <div class="modal-content">
-                                        <div class="box">
-                                            <div class="modal-card">
-                                                <header class="modal-card-head">
-                                                  <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
-                                                  <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
-                                                </header>
-                                                <section class="modal-card-body">
-                                                  <input type="text" class="form-control" id="address" placeholder="주소">
-                                                </section>
-                                                <footer class="modal-card-foot">
-                                                  <button class="button" onclick="to_kakao()">추천!</button>
-                                                </footer>
+                                <div class="modal" id="modal-post5">
+                                    <div class="modal-background" onclick='$("#modal-post5").removeClass("is-active")'></div>
+                                    <div class="modal-content" style="width: 800px;">
+                                        <header class="modal-card-head">
+                                          <h5 class="modal-card-title" id="modal-label">식당을 추천받기 위해 주소를 입력해주세요.</h5>
+                                          <button class="button modal-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                          <input class="input is-rounded posting_q1_input" type="text" class="form-control" id="address" placeholder="주소">
+                                          <div class="button-group-out">
+                                                <button class="button next-stage" onclick="to_kakao()">추천!</button>
                                             </div>
-                                        </div>
+                                        </section>
                                     </div>
                                 </div>`
             let btnGroup = $('#button-group')
