@@ -367,7 +367,7 @@ def saving_update():
                         'profile_pic': profile_url,
                         'updated_at': datetime.now().strftime('%Y.%m.%d %H:%M:%S')
                         }
-        db.user_info.update({'username': username}, new_doc)
+            db.user_info.update_one({'username': username}, new_doc)
         return jsonify({"result": "success", 'msg': '프로필을 업데이트했습니다.'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for('/'))
