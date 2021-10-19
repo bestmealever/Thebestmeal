@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Webpage Title -->
-    <title>오늘 뭐 먹지? | Mypage</title>
+    <title>오늘 뭐 먹지? | {{ user_info.id }}</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -162,9 +162,9 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong> {{ user_info.id }} </strong>
+                                <strong>{{ user_info.id }}</strong>
                                 <br>
-                                 {{ user_info.profile }}
+                                {{ user_info.profile }}
                             </p>
                         </div>
                     </div>
@@ -176,11 +176,11 @@
         </section>
     </header>
     <main>
-        <select class="dropdown" id="dropdown" name="sort" onchange="">
+        <!--<select class="dropdown" id="dropdown" name="sort" onchange="">
             <option value="sort-all">전체보기</option>
             <option value="sort-postion">추천한 음식별</option>
             <option value="sort-liked">좋아한 음식별</option>
-        </select>
+        </select>-->
         <div class="cards-4" id="post-box">
             <div class="card">
                 <div class="card-image">
@@ -321,7 +321,7 @@
 
                                 <div class="control is-expanded">
                                     <div class="file has-name">
-                                        <label class="file-label" style="width:100%">
+                                        <label class="file-label" style="width:100%" for="input-pic">
                                             <input id="input-pic" class="file-input" type="file"
                                                    name="resume">
                                             <span class="file-cta"><span class="file-icon"><i

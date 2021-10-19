@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Webpage Title -->
+    <title>오늘 뭐 먹지? | {{ user_info.id }} </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--파비콘-->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon2.ico"/>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!--<link href="{{ url_for('static', filename='mycss.css') }}" rel="stylesheet">-->
+    <link href="../static/mycss.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--JS 파일-->
+    <script src="../static/myjs.js" rel="script"></script>
+    <script src="../static/postingjs.js" rel="script"></script>
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <script>
+        $('.category').click(function () {
+            $(this).addClass('is-danger');
+        });
+
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/"
+        }
+    </script>
+</head>
+
+
+<body>
+<!--타이틀부분-->
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                오늘 뭐 먹지?
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button log-in is-primary" id="logout" onclick="sign_out()">
+                            <strong>로그아웃</strong>
+                        </a>
+                        <a class="button is-light" id="mypage">
+                            마이 페이지
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--본문-->
+<main id="wrap">
+    <div class="button-group" id="button-group">
+        <p class="question-style" style="margin-bottom: 10px;"> Q.1 추천해주실 음식 이름이 무엇인가요? </p>
+        <progress class="progress is-normal" value="5" max="100" style="background-color: #FFB890;">5%</progress>
+
+        <p class="posting_q1">추천할 <b>음식 이름</b>은</p>
+        <div style="padding: 0 25% 0 25%">
+
+            <input class="input is-rounded posting_q1_input" type="text" placeholder="(예시)삼겹살" id="foodname"
+                   onkeyup="if(window.event.keyCode==13){step1()}">
+
+        </div>
+        <p class="posting_q1">입니다</p>
+        <div class="button-group-out">
+            <button class="button next-stage" onclick="step1()" id="step1">다음</button>
+        </div>
+    </div>
+</main>
+<!--모달1-->
+<div class="modal" id="modal-post">
+    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="modaltext-point">앗!</p>
+            <p class="modaltext">음식 이름을 입력해주세요</p>
+            <div class="level-item">
+                <a class="button is-sparta is-outlined" onclick='$("#modal-post").removeClass("is-active")'>확인</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--모달2-->
+<div class="modal" id="modal-post2">
+    <div class="modal-background" onclick='$("#modal-post2").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="modaltext-point">앗!</p>
+            <p class="modaltext">이미 등록되어 있는 음식입니다</p>
+            <div class="level-item">
+                <a class="button is-sparta is-outlined" onclick='$("#modal-post2").removeClass("is-active")'>확인</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--모달3-->
+<div class="modal" id="modal-post3">
+    <div class="modal-background" onclick='$("#modal-post3").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="modaltext-point">앗!</p>
+            <p class="modaltext">1개 이상 선택해주세요</p>
+            <div class="level-item">
+                <a class="button is-sparta is-outlined" onclick='$("#modal-post3").removeClass("is-active")'>확인</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--모달4-->
+<div class="modal" id="modal-post4">
+    <div class="modal-background" onclick='$("#modal-post4").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="modaltext-point">앗!</p>
+            <p class="modaltext">음식 추천 완료! 감사합니다!</p>
+            <div class="level-item">
+                <a class="button is-sparta is-outlined" onclick='$("#modal-post3").removeClass("is-active")'>확인</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--푸터-->
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>오늘 뭐 먹지?</strong> made by
+            <a href="https://github.com/bestmealever/Thebestmeal">이거사조</a>. <br>
+            이거사조 is Team 4 in 내일배움캠프. <br>
+            Welcome to <a href="https://spartacodingclub.kr/">스파르타코딩클럽</a>.
+        </p>
+    </div>
+</footer>
+</body>
+</html>
